@@ -6,20 +6,27 @@ import java.util.List;
 public class Orders {
     private final List<Order> orders;
 
-    private Orders(List<Order> orders) {
+    public Orders(String userInput) {
+        List<Order> orders = toOrders(userInput);
+        validate(orders);
         this.orders = orders;
     }
 
-    public Orders from(String userInput) {
-        List<Order> unValidatedOrders = toOrders(userInput);
-        List<Order> validatedOrders = validate(unValidatedOrders);
-        return new Orders(validatedOrders);
+    private void validate(List<Order> unValidatedOrders) {
+        validateDuplicate(unValidatedOrders);
+        // TODO 음료만 주문했는지 검증
     }
 
-    private List<Order> validate(List<Order> unValidatedOrders) {
-        // TODO 같은 메뉴가 중복되는지 확인
+    private void validateDuplicate(List<Order> unValidatedOrders) {
+        long count = unValidatedOrders.stream()
+                .distinct()
+                .count();
 
-        return unValidatedOrders;
+        int size = unValidatedOrders.size();
+
+        if (count != size) {
+            throw new IllegalArgumentException("[ERROR] 중복된 메뉴를 작성할 수 없습니다. 합계로 작성해주세요.");
+        }
     }
 
     private List<Order> toOrders(String userOrders) {
