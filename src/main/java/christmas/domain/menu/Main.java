@@ -3,7 +3,7 @@ package christmas.domain.menu;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Main {
+public enum Main implements Menu{
     T_BONE_STEAK(new Name("티본스테이크"), new Price(55000)),
     BBQ_RIB(new Name("바비큐립"), new Price(54000)),
     SEAFOOD_PASTA(new Name("해산물파스타"), new Price(35000)),
@@ -17,13 +17,20 @@ public enum Main {
         this.price = price;
     }
 
+    @Override
     public List<Name> allName() {
         return Arrays.stream(Main.values())
                 .map(Main::getName)
                 .toList();
     }
 
+    @Override
     public Name getName() {
         return name;
+    }
+
+    @Override
+    public Price getPrice() {
+        return price;
     }
 }
