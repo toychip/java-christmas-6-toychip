@@ -1,6 +1,8 @@
 package christmas.domain.order;
 
 import christmas.domain.menu.Drink;
+import christmas.exception.OrderDuplicateMenuException;
+import christmas.exception.OrderOnlyDrinkException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,14 +28,14 @@ public class Orders {
         int size = unValidatedOrders.size();
 
         if (count != size) {
-            throw new IllegalArgumentException("[ERROR] 중복된 메뉴를 작성할 수 없습니다. 합계로 작성해주세요.");
+            throw new OrderDuplicateMenuException();
         }
     }
 
     private void validateOnlyDrink(final List<Order> unValidatedOrders) {
         boolean isOnlyDrink = isOnlyDrink(unValidatedOrders);
         if (isOnlyDrink) {
-            throw new IllegalArgumentException("[ERROR] 음료만 주문할 수 없습니다.");
+            throw new OrderOnlyDrinkException();
         }
     }
 

@@ -1,5 +1,7 @@
 package christmas.domain.menu.component;
 
+import christmas.exception.NotExistsMenuException;
+import christmas.exception.PriceUnitException;
 import java.util.Objects;
 
 public class Price {
@@ -12,7 +14,7 @@ public class Price {
 
     private void validate(final int value) {
         if (value < 0) {
-            throw new IllegalArgumentException("[ERROR] 가격은 0원 이하일 수 없음");
+            throw new PriceUnitException();
         }
     }
 

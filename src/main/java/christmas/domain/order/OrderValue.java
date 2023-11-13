@@ -1,5 +1,7 @@
 package christmas.domain.order;
 
+import christmas.exception.OrderValueUnitException;
+
 public record OrderValue(int quantity) {
     public OrderValue {
         validate(quantity);
@@ -7,7 +9,7 @@ public record OrderValue(int quantity) {
 
     private void validate(final int quantity) {
         if (quantity <= 0) {
-            throw new IllegalArgumentException("[ERROR] 주문 수량이 0이하일 수는 없습니다.");
+            throw new OrderValueUnitException();
         }
     }
 }

@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.exception.DateUnitException;
+
 public class VisitDate {
     private final int date;
     private static final int DATE_MIN = 1;
@@ -12,7 +14,7 @@ public class VisitDate {
 
     private void validate(final int date) {
         if (date < DATE_MIN || date > DATE_MAX) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new DateUnitException();
         }
     }
 

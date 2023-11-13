@@ -5,6 +5,7 @@ import christmas.domain.menu.Desert;
 import christmas.domain.menu.Drink;
 import christmas.domain.menu.Main;
 import christmas.domain.menu.component.Name;
+import christmas.exception.NotExistsMenuException;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
@@ -24,7 +25,7 @@ public record OrderMenu(String menuName) {
                 .anyMatch(name -> name.toString().equals(userMenu));
 
         if (!isContains) {
-            throw new IllegalArgumentException("[ERROR] 메뉴에 없는 주문");
+            throw new NotExistsMenuException();
         }
     }
 
