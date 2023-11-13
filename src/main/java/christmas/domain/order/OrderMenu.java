@@ -9,12 +9,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class OrderMenu {
-    private final String menuName;
-
-    public OrderMenu(String menuName) {
+public record OrderMenu(String menuName) {
+    public OrderMenu {
         validate(menuName);
-        this.menuName = menuName;
     }
 
     private void validate(String userMenu) {
@@ -39,9 +36,5 @@ public class OrderMenu {
                         Main.allName()
                 ).flatMap(Collection::stream)
                 .toList();
-    }
-
-    public String getMenuName() {
-        return menuName;
     }
 }
