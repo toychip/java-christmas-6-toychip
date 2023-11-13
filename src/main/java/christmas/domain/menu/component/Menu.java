@@ -1,4 +1,4 @@
-package christmas.domain.menu;
+package christmas.domain.menu.component;
 
 import java.util.List;
 

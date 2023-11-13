@@ -1,4 +1,4 @@
-package christmas.domain.menu;
+package christmas.domain.menu.component;
 
 public class Price {
     private final int value;

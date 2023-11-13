@@ -1,9 +1,12 @@
 package christmas.domain.menu;
 
+import christmas.domain.menu.component.Menu;
+import christmas.domain.menu.component.Name;
+import christmas.domain.menu.component.Price;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Desert implements Menu{
+public enum Desert implements Menu {
     CHOCO_CAKE(new Name("초코케이크"), new Price(15000)),
     ICE_CREAM(new Name("아이스크림"), new Price(5000));
 

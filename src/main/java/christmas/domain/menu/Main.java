@@ -1,9 +1,12 @@
 package christmas.domain.menu;
 
+import christmas.domain.menu.component.Menu;
+import christmas.domain.menu.component.Name;
+import christmas.domain.menu.component.Price;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Main implements Menu{
+public enum Main implements Menu {
     T_BONE_STEAK(new Name("티본스테이크"), new Price(55000)),
     BBQ_RIB(new Name("바비큐립"), new Price(54000)),
     SEAFOOD_PASTA(new Name("해산물파스타"), new Price(35000)),
