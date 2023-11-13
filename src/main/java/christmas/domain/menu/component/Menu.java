@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Menu {
 
-    List<Name> allName();
+//    List<Name> allName();
     Name getName();
     int getPrice();
 }

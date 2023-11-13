@@ -21,8 +21,8 @@ public enum Drink implements Menu {
         this.giftOption = giftOption;
     }
 
-    @Override
-    public List<Name> allName() {
+//    @Override
+    public static List<Name> allName() {
         return Arrays.stream(Drink.values())
                 .map(Drink::getName)
                 .toList();

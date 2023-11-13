@@ -20,8 +20,8 @@ public enum Main implements Menu {
         this.price = price;
     }
 
-    @Override
-    public List<Name> allName() {
+//    @Override
+    public static List<Name> allName() {
         return Arrays.stream(Main.values())
                 .map(Main::getName)
                 .toList();
