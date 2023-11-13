@@ -28,6 +28,13 @@ public enum Drink implements Menu {
                 .toList();
     }
 
+    public static List<String> allNameString() {
+        return Arrays.stream(Drink.values())
+                .map(Drink::getName)
+                .map(Name::getName)
+                .toList();
+    }
+
     @Override
     public Name getName() {
         return name;

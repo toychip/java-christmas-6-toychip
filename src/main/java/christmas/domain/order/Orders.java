@@ -1,5 +1,6 @@
 package christmas.domain.order;
 
+import christmas.domain.menu.Drink;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class Orders {
 
     private void validate(List<Order> unValidatedOrders) {
         validateDuplicate(unValidatedOrders);
-        // TODO 음료만 주문했는지 검증
+        validateOnlyDrink(unValidatedOrders);
+
     }
 
     private void validateDuplicate(List<Order> unValidatedOrders) {
@@ -27,6 +29,19 @@ public class Orders {
         if (count != size) {
             throw new IllegalArgumentException("[ERROR] 중복된 메뉴를 작성할 수 없습니다. 합계로 작성해주세요.");
         }
+    }
+
+    private void validateOnlyDrink(List<Order> unValidatedOrders) {
+        boolean isOnlyDrink = isOnlyDrink(unValidatedOrders);
+        if (isOnlyDrink) {
+            throw new IllegalArgumentException("[ERROR] 음료만 주문할 수 없습니다.");
+        }
+    }
+
+    private boolean isOnlyDrink(List<Order> unValidatedOrders) {
+        List<String> dinkNames = Drink.allNameString();
+        return unValidatedOrders.stream()
+                .allMatch(order -> dinkNames.contains(order.orderMenuName()));
     }
 
     private List<Order> toOrders(String userOrders) {
@@ -63,5 +78,9 @@ public class Orders {
 
     private int getQuantityFromParts(List<String> parts) {
         return Integer.parseInt(parts.get(1)); // 두 번째 요소가 수량
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }
