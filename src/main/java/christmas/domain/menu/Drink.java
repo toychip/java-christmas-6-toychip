@@ -34,8 +34,8 @@ public enum Drink implements Menu {
     }
 
     @Override
-    public Price getPrice() {
-        return price;
+    public int getPrice() {
+        return price.getValue();
     }
 
     public boolean isGiftOption() {

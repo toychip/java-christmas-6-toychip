@@ -6,5 +6,5 @@ public interface Menu {
 
     List<Name> allName();
     Name getName();
-    Price getPrice();
+    int getPrice();
 }

@@ -33,7 +33,7 @@ public enum Main implements Menu {
     }
 
     @Override
-    public Price getPrice() {
-        return price;
+    public int getPrice() {
+        return price.getValue();
     }
 }
