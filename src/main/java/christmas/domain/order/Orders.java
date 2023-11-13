@@ -21,15 +21,23 @@ public class Orders {
     }
 
     private void validateDuplicate(final List<Order> unValidatedOrders) {
-        long count = unValidatedOrders.stream()
+        List<OrderMenu> orderMenus = getOrderMenus(unValidatedOrders);
+
+        long count = orderMenus.stream()
                 .distinct()
                 .count();
 
-        int size = unValidatedOrders.size();
+        int size = orderMenus.size();
 
         if (count != size) {
             throw new OrderDuplicateMenuException();
         }
+    }
+
+    private List<OrderMenu> getOrderMenus(List<Order> unValidatedOrders) {
+        return unValidatedOrders.stream()
+                .map(Order::orderMenu)
+                .toList();
     }
 
     private void validateOnlyDrink(final List<Order> unValidatedOrders) {
