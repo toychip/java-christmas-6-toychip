@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Name {
     private final String name;
 
-    public Name(String name) {
+    public Name(final String name) {
         validate(name);
         this.name = name;
     }
 
-    private void validate(String name) {
+    private void validate(final String name) {
         // ... 이름이 에피타이저, 메인, 디저트, 음료에 포함되어있는지 확인
     }
 

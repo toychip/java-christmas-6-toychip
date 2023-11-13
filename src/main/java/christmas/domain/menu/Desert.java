@@ -13,7 +13,7 @@ public enum Desert implements Menu {
     private final Name name;
     private final Price price;
 
-    Desert(Name name, Price price) {
+    Desert(final Name name, final Price price) {
         this.name = name;
         this.price = price;
     }

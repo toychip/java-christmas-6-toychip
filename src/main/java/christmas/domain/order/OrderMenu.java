@@ -14,11 +14,11 @@ public record OrderMenu(String menuName) {
         validate(menuName);
     }
 
-    private void validate(String userMenu) {
+    private void validate(final String userMenu) {
         validateMenuExistence(userMenu);
     }
 
-    private void validateMenuExistence(String userMenu) {
+    private void validateMenuExistence(final String userMenu) {
         List<Name> allMenuNames = getAllMenuNames();
         boolean isContains = allMenuNames.stream()
                 .anyMatch(name -> name.toString().equals(userMenu));

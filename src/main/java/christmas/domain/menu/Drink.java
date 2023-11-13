@@ -15,7 +15,7 @@ public enum Drink implements Menu {
     private final Price price;
     private final boolean giftOption;
 
-    Drink(Name name, Price price, boolean giftOption) {
+    Drink(final Name name, final Price price, final boolean giftOption) {
         this.name = name;
         this.price = price;
         this.giftOption = giftOption;

@@ -14,7 +14,7 @@ public enum Appetizer implements Menu {
     private final Name name;
     private final Price price;
 
-    Appetizer(Name name, Price price) {
+    Appetizer(final Name name, final Price price) {
         this.name = name;
         this.price = price;
     }

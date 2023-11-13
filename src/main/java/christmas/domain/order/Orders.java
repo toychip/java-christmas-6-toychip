@@ -7,19 +7,18 @@ import java.util.List;
 public class Orders {
     private final List<Order> orders;
 
-    public Orders(String userInput) {
+    public Orders(final String userInput) {
         List<Order> orders = toOrders(userInput);
         validate(orders);
         this.orders = orders;
     }
 
-    private void validate(List<Order> unValidatedOrders) {
+    private void validate(final List<Order> unValidatedOrders) {
         validateDuplicate(unValidatedOrders);
         validateOnlyDrink(unValidatedOrders);
-
     }
 
-    private void validateDuplicate(List<Order> unValidatedOrders) {
+    private void validateDuplicate(final List<Order> unValidatedOrders) {
         long count = unValidatedOrders.stream()
                 .distinct()
                 .count();
@@ -31,20 +30,20 @@ public class Orders {
         }
     }
 
-    private void validateOnlyDrink(List<Order> unValidatedOrders) {
+    private void validateOnlyDrink(final List<Order> unValidatedOrders) {
         boolean isOnlyDrink = isOnlyDrink(unValidatedOrders);
         if (isOnlyDrink) {
             throw new IllegalArgumentException("[ERROR] 음료만 주문할 수 없습니다.");
         }
     }
 
-    private boolean isOnlyDrink(List<Order> unValidatedOrders) {
+    private boolean isOnlyDrink(final List<Order> unValidatedOrders) {
         List<String> dinkNames = Drink.allNameString();
         return unValidatedOrders.stream()
                 .allMatch(order -> dinkNames.contains(order.orderMenuName()));
     }
 
-    private List<Order> toOrders(String userOrders) {
+    private List<Order> toOrders(final String userOrders) {
         List<String> list = divideOrders(userOrders);
         return list.stream()
                 .map(this::divideMenuAndValue)
@@ -52,13 +51,13 @@ public class Orders {
     }
 
     // 티본스테이크-1,바비큐립-1,초코케이크-2 -> [티본스테이크-1] [바비큐립-1] [초코케이크-2]
-    private List<String> divideOrders(String userInput) {
+    private List<String> divideOrders(final String userInput) {
         return Arrays.stream(userInput.split(","))
                 .map(String::trim)
                 .toList();
     }
 
-    private Order divideMenuAndValue(String orderInput) {
+    private Order divideMenuAndValue(final String orderInput) {
         List<String> parts = divideOrder(orderInput);
         String menuName = getMenuNameFromParts(parts);
         int quantity = getQuantityFromParts(parts);
@@ -66,17 +65,17 @@ public class Orders {
     }
 
     // [티본스테이크-1] -> [티본스테이크], [1]
-    private List<String> divideOrder(String userOrder) {
+    private List<String> divideOrder(final String userOrder) {
         return Arrays.stream(userOrder.split("-"))
                 .map(String::trim)
                 .toList();
     }
 
-    private String getMenuNameFromParts(List<String> parts) {
+    private String getMenuNameFromParts(final List<String> parts) {
         return parts.get(0); // 첫 번째 요소가 메뉴 이름
     }
 
-    private int getQuantityFromParts(List<String> parts) {
+    private int getQuantityFromParts(final List<String> parts) {
         return Integer.parseInt(parts.get(1)); // 두 번째 요소가 수량
     }
 

@@ -7,7 +7,7 @@ public class ChristmasController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public ChristmasController(InputView inputView, OutputView outputView) {
+    public ChristmasController(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }

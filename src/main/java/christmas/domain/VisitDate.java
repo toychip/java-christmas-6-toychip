@@ -5,12 +5,12 @@ public class VisitDate {
     private static final int DATE_MIN = 1;
     private static final int DATE_MAX = 31;
 
-    public VisitDate(int date) {
+    public VisitDate(final int date) {
         validate(date);
         this.date = date;
     }
 
-    public void validate(int date) {
+    private void validate(final int date) {
         if (date < DATE_MIN || date > DATE_MAX) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
