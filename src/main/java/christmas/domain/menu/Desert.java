@@ -5,6 +5,7 @@ import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public enum Desert implements Menu {
     CHOCO_CAKE(new Name("초코케이크"), new Price(15000)),
@@ -23,6 +24,10 @@ public enum Desert implements Menu {
         return Arrays.stream(Desert.values())
                 .map(Desert::getName)
                 .toList();
+    }
+
+    public static Stream<Menu> streamAllDesert() {
+        return Arrays.stream(Desert.values());
     }
 
     @Override

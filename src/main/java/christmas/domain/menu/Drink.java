@@ -5,6 +5,7 @@ import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public enum Drink implements Menu {
     ZERO_COLA(new Name("제로콜라"), new Price(3000), false),
@@ -33,6 +34,10 @@ public enum Drink implements Menu {
                 .map(Drink::getName)
                 .map(Name::getName)
                 .toList();
+    }
+
+    public static Stream<Menu> streamAllDrink() {
+        return Arrays.stream(Drink.values());
     }
 
     public static Drink generateGift() {

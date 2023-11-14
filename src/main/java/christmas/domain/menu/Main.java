@@ -5,6 +5,7 @@ import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public enum Main implements Menu {
     T_BONE_STEAK(new Name("티본스테이크"), new Price(55000)),
@@ -25,6 +26,10 @@ public enum Main implements Menu {
         return Arrays.stream(Main.values())
                 .map(Main::getName)
                 .toList();
+    }
+
+    public static Stream<Menu> streamAllMain() {
+        return Arrays.stream(Main.values());
     }
 
     @Override

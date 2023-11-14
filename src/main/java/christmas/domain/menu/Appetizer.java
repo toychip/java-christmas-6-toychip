@@ -5,6 +5,7 @@ import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public enum Appetizer implements Menu {
     PINE_MUSHROOM_SOUP(new Name("양송이수프"), new Price(6000)),
@@ -25,6 +26,10 @@ public enum Appetizer implements Menu {
         return Arrays.stream(Appetizer.values())
                 .map(Appetizer::getName)
                 .toList();
+    }
+
+    public static Stream<Menu> streamAllAppetizer() {
+        return Arrays.stream(Appetizer.values());
     }
 
     @Override
