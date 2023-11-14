@@ -25,4 +25,19 @@ class GiftMenuEventTest {
         assertEquals(priceValue, 25000);
     }
 
+
+    @ParameterizedTest
+    @CsvSource("130000")
+    void 증정_이벤트_증정_상품이름_테스트(int userInputPrice){
+        //given
+        Price price = new Price(userInputPrice);
+
+        // when
+        GiftMenuEvent giftMenuEvent = new GiftMenuEvent(price);
+        String giftName = giftMenuEvent.getGiftName();
+
+        //then
+        assertEquals(giftName, "샴페인");
+    }
+
 }
