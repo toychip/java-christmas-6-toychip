@@ -5,9 +5,10 @@ import christmas.domain.menu.component.Price;
 
 public class WeekendDiscount implements Discount{
 
+
     @Override
-    public int discount() {
-        return 0;
+    public Price discount() {
+        return null;
     }
 
     @Override

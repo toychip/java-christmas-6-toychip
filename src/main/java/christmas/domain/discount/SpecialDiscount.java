@@ -12,16 +12,16 @@ public class SpecialDiscount implements Discount{
     public SpecialDiscount(VisitDate visitDate, Price originalPrice) {
         this.visitDate = visitDate;
         this.originalPrice = originalPrice;
-        this.discountValue = calculateDiscount();
-    }
-
-    private Price calculateDiscount() {
-        int value = discount();
-        return new Price(value);
+        this.discountValue = discount();
     }
 
     @Override
-    public int discount() {
+    public Price discount() {
+        int value = calculateDiscount();
+        return new Price(value);
+    }
+
+     private int calculateDiscount() {
         return 1000;
     }
 

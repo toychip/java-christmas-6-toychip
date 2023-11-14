@@ -15,7 +15,7 @@ public class ChristmasDiscount implements Discount{
         validate(visitDate);
         this.visitDate = visitDate;
         this.originalPrice = originalPrice;
-        discountValue = calculateDiscount();
+        discountValue = discount();
     }
 
     private void validate(VisitDate visitDate) {
@@ -25,18 +25,18 @@ public class ChristmasDiscount implements Discount{
         }
     }
 
-    private Price calculateDiscount() {
-        int value = discount();
+    @Override
+    public Price discount() {
+        int value = calculateDiscount();
         return new Price(value);
     }
 
-    @Override
-    public int discount() {
+    private int calculateDiscount() {
         int date = getDate();
         return date * 100 + 1000 - 100;
     }
 
-    public int getDate() {
+    private int getDate() {
         return visitDate.getDate();
     }
 
