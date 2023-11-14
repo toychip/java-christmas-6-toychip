@@ -1,9 +1,9 @@
 package christmas.domain.order;
 
 import christmas.domain.menu.Drink;
-import christmas.exception.OrderDuplicateMenuException;
-import christmas.exception.OrderOnlyDrinkException;
-import christmas.exception.OrderTotalExceededException;
+import christmas.exception.order.OrderDuplicateMenuException;
+import christmas.exception.order.OrderOnlyDrinkException;
+import christmas.exception.order.OrderTotalExceededException;
 import java.util.Arrays;
 import java.util.List;
 
