@@ -1,12 +1,13 @@
 package christmas.domain.discount;
 
-import christmas.domain.VisitDate;
+import christmas.domain.date.VisitDate;
+import christmas.domain.date.DecemberCalendar;
 import christmas.domain.menu.Desert;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Order;
 import christmas.domain.order.Orders;
-import christmas.exception.discount.InvalidWeekdayException;
+import christmas.exception.inside.discount.InvalidWeekdayException;
 import java.util.List;
 
 public class WeekdayDiscount implements Discount{

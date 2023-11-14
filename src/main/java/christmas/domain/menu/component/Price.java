@@ -1,7 +1,6 @@
 package christmas.domain.menu.component;
 
-import christmas.exception.NotExistsMenuException;
-import christmas.exception.PriceUnitException;
+import christmas.exception.inside.PriceUnitException;
 import java.util.Objects;
 
 public class Price {

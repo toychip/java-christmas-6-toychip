@@ -1,8 +1,8 @@
 package christmas.domain.discount;
 
-import christmas.domain.VisitDate;
+import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Price;
-import christmas.exception.discount.XmasDiscountUnitException;
+import christmas.exception.inside.discount.XmasDiscountUnitException;
 
 public class ChristmasDiscount implements Discount{
 

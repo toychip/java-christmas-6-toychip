@@ -3,7 +3,7 @@ package christmas.domain.discount;
 import christmas.domain.menu.Drink;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
-import christmas.exception.discount.InvalidGiftMenuException;
+import christmas.exception.inside.discount.InvalidGiftMenuException;
 
 public class GiftMenuEvent implements Discount{
     private final Price originalPrice;

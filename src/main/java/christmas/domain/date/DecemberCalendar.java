@@ -1,6 +1,4 @@
-package christmas.domain.discount;
-
-import christmas.domain.VisitDate;
+package christmas.domain.date;
 
 public enum DecemberCalendar {
     DAY_1(new VisitDate("1"), false, true, false),

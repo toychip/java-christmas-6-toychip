@@ -1,6 +1,6 @@
 package christmas.domain.order;
 
-import christmas.exception.order.OrderValueMinUnitException;
+import christmas.exception.outside.order.OrderValueMinUnitException;
 
 public record OrderValue(int quantity) {
     public OrderValue {

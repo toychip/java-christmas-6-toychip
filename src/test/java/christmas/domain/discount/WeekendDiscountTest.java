@@ -3,10 +3,10 @@ package christmas.domain.discount;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import christmas.domain.VisitDate;
+import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
-import christmas.exception.discount.InvalidWeekendException;
+import christmas.exception.inside.discount.InvalidWeekendException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

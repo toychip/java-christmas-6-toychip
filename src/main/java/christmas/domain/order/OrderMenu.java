@@ -5,7 +5,7 @@ import christmas.domain.menu.Desert;
 import christmas.domain.menu.Drink;
 import christmas.domain.menu.Main;
 import christmas.domain.menu.component.Name;
-import christmas.exception.NotExistsMenuException;
+import christmas.exception.outside.NotExistsMenuException;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;

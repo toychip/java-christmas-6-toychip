@@ -1,6 +1,6 @@
-package christmas.domain;
+package christmas.domain.date;
 
-import christmas.exception.DateUnitException;
+import christmas.exception.outside.DateUnitException;
 
 public class VisitDate {
     private final int date;
