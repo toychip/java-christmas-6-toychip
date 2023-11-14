@@ -35,14 +35,18 @@ public enum Drink implements Menu {
                 .toList();
     }
 
+    public static Drink generateGift() {
+        return Drink.CHAMPAGNE;
+    }
+
     @Override
     public Name getName() {
         return name;
     }
 
     @Override
-    public int getPrice() {
-        return price.getValue();
+    public Price getPrice() {
+        return price;
     }
 
     public boolean isGiftOption() {
