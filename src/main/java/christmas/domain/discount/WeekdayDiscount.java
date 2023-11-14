@@ -16,10 +16,15 @@ public class WeekdayDiscount implements Discount{
     private final Price discountValue;
 
     public WeekdayDiscount(VisitDate visitDate, Orders orders, Price originalPrice) {
+        validate(visitDate);
         this.visitDate = visitDate;
         this.orders = orders;
         this.originalPrice = originalPrice;
         this.discountValue = discount();
+    }
+
+    private void validate(VisitDate visitDate) {
+        // TODO 날짜가 평일이 맞는지 검증
     }
 
     @Override
@@ -30,15 +35,16 @@ public class WeekdayDiscount implements Discount{
 
     private int calculateDiscount() {
         int count = orderContainsDesertCount();
+
         return count * 2023;
     }
 
     private int orderContainsDesertCount() {
         List<String> desertMenuNames = getDesertMenuNames();
-        return (int) orders.getOrders().stream()
-                .map(Order::orderMenuName)
-                .filter(desertMenuNames::contains)
-                .count();
+        return orders.getOrders().stream()
+                .filter(order -> desertMenuNames.contains(order.orderMenuName()))
+                .mapToInt(Order::orderValueQuantity)
+                .sum();
     }
 
     private List<String> getDesertMenuNames() {
