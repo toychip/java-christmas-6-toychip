@@ -40,14 +40,17 @@ public class ChristmasDiscount implements Discount{
         return visitDate.getDate();
     }
 
+    @Override
     public VisitDate getVisitDate() {
         return visitDate;
     }
 
+    @Override
     public Price getOriginalPrice() {
         return originalPrice;
     }
 
+    @Override
     public Price getDiscountValue() {
         return discountValue;
     }
