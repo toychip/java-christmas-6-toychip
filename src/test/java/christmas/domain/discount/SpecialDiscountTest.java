@@ -10,9 +10,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 class SpecialDiscountTest {
 
     @ParameterizedTest
-    @CsvSource({"23, 10000", "24, 13131"})
-    void 특별할인_테스트(String userInputDate, int userInputPrice){
+    @CsvSource({"3", "10", "17", "24", "25", "31"})
+    void 특별할인_테스트(String userInputDate){
 
+        int userInputPrice = 10000;
         //given
         VisitDate visitDate = new VisitDate(userInputDate);
         Price price = new Price(userInputPrice);
