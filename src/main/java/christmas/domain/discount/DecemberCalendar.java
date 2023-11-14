@@ -48,11 +48,21 @@ public enum DecemberCalendar {
     private final boolean weekend;
     private final boolean star;
 
-    public static boolean matchWeekDay(VisitDate visitDate) {
+    public static boolean matchWeekday(VisitDate visitDate) {
         int date = visitDate.getDate();
         for (DecemberCalendar day : DecemberCalendar.values()) {
             if (day.getDate() == date) {
                 return day.isWeekday();
+            }
+        }
+        return false;
+    }
+
+    public static boolean matchWeekend(VisitDate visitDate) {
+        int date = visitDate.getDate();
+        for (DecemberCalendar day : DecemberCalendar.values()) {
+            if (day.getDate() == date) {
+                return day.isWeekend();
             }
         }
         return false;

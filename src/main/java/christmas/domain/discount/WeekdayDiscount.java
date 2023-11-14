@@ -25,11 +25,11 @@ public class WeekdayDiscount implements Discount{
     }
 
     private void validate(VisitDate visitDate) {
-        validateIsWeekDay(visitDate);
+        validateIsWeekday(visitDate);
     }
 
-    private void validateIsWeekDay(VisitDate visitDate) {
-        boolean isWeekDay = DecemberCalendar.matchWeekDay(visitDate);
+    private void validateIsWeekday(VisitDate visitDate) {
+        boolean isWeekDay = DecemberCalendar.matchWeekday(visitDate);
         if (!isWeekDay) {
             throw new InvalidWeekDayException();
         }
