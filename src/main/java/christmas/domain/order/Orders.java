@@ -3,6 +3,7 @@ package christmas.domain.order;
 import christmas.domain.menu.Drink;
 import christmas.exception.OrderDuplicateMenuException;
 import christmas.exception.OrderOnlyDrinkException;
+import christmas.exception.OrderTotalExceededException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class Orders {
     private void validate(final List<Order> unValidatedOrders) {
         validateDuplicate(unValidatedOrders);
         validateOnlyDrink(unValidatedOrders);
+        validateMaxValue(unValidatedOrders);
     }
 
     private void validateDuplicate(final List<Order> unValidatedOrders) {
@@ -51,6 +53,19 @@ public class Orders {
         List<String> dinkNames = Drink.allNameString();
         return unValidatedOrders.stream()
                 .allMatch(order -> dinkNames.contains(order.orderMenuName()));
+    }
+
+    private void validateMaxValue(List<Order> unValidatedOrders) {
+        Long quantitySum = getQuantitySum(unValidatedOrders);
+        if (quantitySum > 20) {
+            throw new OrderTotalExceededException();
+        }
+    }
+
+    private Long getQuantitySum(List<Order> unValidatedOrders) {
+        return unValidatedOrders.stream()
+                .mapToLong(Order::orderValueQuantity)
+                .sum();
     }
 
     private List<Order> toOrders(final String userOrders) {
