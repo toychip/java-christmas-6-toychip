@@ -19,6 +19,10 @@ public class ChristmasDiscount implements Discount{
     }
 
     private void validate(VisitDate visitDate) {
+        validateXmasPassed(visitDate);
+    }
+
+    private void validateXmasPassed(VisitDate visitDate) {
         int date = visitDate.getDate();
         if (date > 25) {
             throw new XmasDiscountUnitException();
