@@ -68,6 +68,16 @@ public enum DecemberCalendar {
         return false;
     }
 
+    public static boolean matchStar(VisitDate visitDate) {
+        int date = visitDate.getDate();
+        for (DecemberCalendar day : DecemberCalendar.values()) {
+            if (day.getDate() == date) {
+                return day.isStar();
+            }
+        }
+        return false;
+    }
+
     private int getDate() {
         return date.getDate();
     }

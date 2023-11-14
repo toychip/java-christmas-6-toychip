@@ -2,6 +2,8 @@ package christmas.domain.discount;
 
 import christmas.domain.VisitDate;
 import christmas.domain.menu.component.Price;
+import christmas.exception.discount.InvalidStarException;
+import christmas.exception.discount.InvalidWeekdayException;
 
 public class SpecialDiscount implements Discount{
 
@@ -17,7 +19,14 @@ public class SpecialDiscount implements Discount{
     }
 
     private void validate(VisitDate visitDate) {
-        // TODO 별표가 들어간 날짜인지 확인해야함
+        validateIsStar(visitDate);
+    }
+
+    private void validateIsStar(VisitDate visitDate) {
+        boolean isStar = DecemberCalendar.matchStar(visitDate);
+        if (!isStar) {
+            throw new InvalidStarException();
+        }
     }
 
     @Override
