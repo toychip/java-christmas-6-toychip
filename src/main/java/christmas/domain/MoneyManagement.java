@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.domain.date.VisitDate;
+import christmas.domain.discount.GiftMenuEvent;
 import christmas.domain.menu.Appetizer;
 import christmas.domain.menu.Desert;
 import christmas.domain.menu.Drink;
@@ -19,7 +20,7 @@ public class MoneyManagement {
     private final VisitDate visitDate;
 
     private final Price totalPrePrice;
-    private final Name giftMenu;
+    private final GiftMenuEvent giftMenu;
     private final List<Price> discountDetails;
     private final Price totalDiscountPrice;
     private final Price totalPostPrice;
@@ -30,11 +31,11 @@ public class MoneyManagement {
         this.orders = orders;
         this.visitDate = visitDate;
         this.totalPrePrice = getTotalPrePrice();
-//        this.giftMenu = giftMenu;
-//        this.discountDetails = discountDetails;
-//        this.totalDiscountPrice = totalDiscountPrice;
-//        this.totalPostPrice = totalPostPrice;
-//        Badge = badge;
+        this.giftMenu = canGiftMenu();
+        this.discountDetails = getDiscountDetails();
+        this.totalDiscountPrice = getTotalDiscountPrice();
+        this.totalPostPrice = getTotalPostPrice();
+        Badge = getBadge();
     }
 
     private Price getTotalPrePrice() {
@@ -59,7 +60,7 @@ public class MoneyManagement {
                 })
                 .findAny()
                 .map(menu -> menu.getPrice().getValue())
-                .orElseThrow(() -> NotExistsMenuInsideException.class);
+                .orElseThrow(NotExistsMenuInsideException::new);
     }
 
     private List<Menu> getAllMenu() {
@@ -73,6 +74,24 @@ public class MoneyManagement {
                 .toList();
     }
 
+    private GiftMenuEvent canGiftMenu() {
+        Price totalPrePrice = getTotalPrePrice();
+        return new GiftMenuEvent(totalPrePrice);
+    }
 
+    private List<Price> getDiscountDetails() {
+        return null;
+    }
 
+    private Price getTotalDiscountPrice() {
+        return null;
+    }
+
+    private Price getTotalPostPrice() {
+        return null;
+    }
+
+    private Name getBadge() {
+        return null;
+    }
 }
