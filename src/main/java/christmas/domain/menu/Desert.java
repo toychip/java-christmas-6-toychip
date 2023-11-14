@@ -31,7 +31,7 @@ public enum Desert implements Menu {
     }
 
     @Override
-    public int getPrice() {
-        return price.getValue();
+    public Price getPrice() {
+        return price;
     }
 }
