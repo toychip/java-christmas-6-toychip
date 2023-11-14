@@ -10,9 +10,14 @@ public class SpecialDiscount implements Discount{
     private final Price discountValue;
 
     public SpecialDiscount(VisitDate visitDate, Price originalPrice) {
+        validate(visitDate);
         this.visitDate = visitDate;
         this.originalPrice = originalPrice;
         this.discountValue = discount();
+    }
+
+    private void validate(VisitDate visitDate) {
+        // TODO 별표가 들어간 날짜인지 확인해야함
     }
 
     @Override
