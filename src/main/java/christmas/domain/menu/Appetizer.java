@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Appetizer implements Menu {
-    PINE_MUSHROOM_SOUP(new Name("양송이스프"), new Price(6000)),
+    PINE_MUSHROOM_SOUP(new Name("양송이수프"), new Price(6000)),
     TAPAS(new Name("타파스"), new Price(5500)),
     CAESAR_SALAD(new Name("시저샐러드"), new Price(8000));
 

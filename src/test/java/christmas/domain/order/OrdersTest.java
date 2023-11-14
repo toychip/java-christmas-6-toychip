@@ -8,9 +8,9 @@ import christmas.exception.DateUnitException;
 import christmas.exception.NotExistsMenuException;
 import christmas.exception.OrderDuplicateMenuException;
 import christmas.exception.OrderOnlyDrinkException;
-import christmas.exception.OrderValueUnitException;
+import christmas.exception.OrderTotalExceededException;
+import christmas.exception.OrderValueMinUnitException;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -21,7 +21,7 @@ class OrdersTest {
 
     @ParameterizedTest
     @DisplayName("메뉴에 없는 주문 생성시 NotExistsMenuException 발생하며 공식 주문 오류메시지 출력")
-    @ValueSource(strings = {"블루와인-2, 양송이스프-1", "초콜릿-2, 사탕-1"})
+    @ValueSource(strings = {"블루와인-2, 양송이수프-1", "초콜릿-2, 사탕-1"})
     void 메뉴에_없는_주문_테스트(String userInput) {
         //given
 
@@ -33,7 +33,7 @@ class OrdersTest {
 
     @ParameterizedTest
     @DisplayName("메뉴가 겹칠 때 OrderDuplicateMenuException 발생하며 공식 주문 오류메시지 출력")
-    @ValueSource(strings = {"양송이스프-2, 양송이스프-1", "티본스테이크-2, 양송이스프-1, 티본스테이크-1"})
+    @ValueSource(strings = {"양송이수프-2, 양송이수프-1", "티본스테이크-2, 양송이수프-1, 티본스테이크-1"})
     void 메뉴가_겹칠때_테스트(String userInput) {
         //given
         //when && then
@@ -72,15 +72,25 @@ class OrdersTest {
     void 주문_수량이_1미만일_때(String userInput) {
 
         // 큰 단위 테스트
-        OrderValueUnitException e1 = assertThrows(
-                OrderValueUnitException.class,
+        OrderValueMinUnitException e1 = assertThrows(
+                OrderValueMinUnitException.class,
                 () -> new Orders(userInput));
 
         // 작은 단위 테스트
-        OrderValueUnitException e2 = assertThrows(
-                OrderValueUnitException.class,
+        OrderValueMinUnitException e2 = assertThrows(
+                OrderValueMinUnitException.class,
                 () -> new OrderValue(0));
         assertEquals(e1.getMessage(), ORDER_ERROR_MESSAGE);
         assertEquals(e2.getMessage(), ORDER_ERROR_MESSAGE);
+    }
+
+    @ParameterizedTest
+    @DisplayName("주문 수량 합계가 20을 초과할 때 OrderTotalExceededException 발생하며 공식 주문 오류 메시지 출력")
+    @ValueSource(strings = {"양송이수프 - 10, 타파스- 3, 시저샐러드 - 8"})
+    void 주문_수량_합계가_20_초과일때(String userInput) {
+        OrderTotalExceededException e = assertThrows(
+                OrderTotalExceededException.class,
+                () -> new Orders(userInput));
+        assertEquals(ORDER_ERROR_MESSAGE, e.getMessage());
     }
 }
