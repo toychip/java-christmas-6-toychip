@@ -1,8 +1,9 @@
 package christmas.domain.discount;
 
 public class WeekdayDiscount implements Discount{
+
     @Override
-    public int amount() {
+    public int discount() {
         return 0;
     }
 }
