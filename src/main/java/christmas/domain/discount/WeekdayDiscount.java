@@ -12,16 +12,12 @@ import java.util.List;
 
 public class WeekdayDiscount implements Discount{
 
-    private final VisitDate visitDate;
     private final Orders orders;
-    private final Price originalPrice;
     private final Price discountValue;
 
-    public WeekdayDiscount(VisitDate visitDate, Orders orders, Price originalPrice) {
+    public WeekdayDiscount(VisitDate visitDate, Orders orders) {
         validate(visitDate);
-        this.visitDate = visitDate;
         this.orders = orders;
-        this.originalPrice = originalPrice;
         this.discountValue = discount();
     }
 
@@ -59,11 +55,6 @@ public class WeekdayDiscount implements Discount{
         return Desert.allName().stream()
                 .map(Name::toString)
                 .toList();
-    }
-
-    @Override
-    public Price getOriginalPrice() {
-        return originalPrice;
     }
 
     @Override

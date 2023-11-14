@@ -6,13 +6,11 @@ import christmas.domain.menu.component.Price;
 import christmas.exception.inside.discount.InvalidGiftMenuException;
 
 public class GiftMenuEvent implements Discount{
-    private final Price originalPrice;
     private final Price discountValue;
     private final Name giftName;
 
     public GiftMenuEvent(Price originalPrice) {
         validate(originalPrice);
-        this.originalPrice = originalPrice;
         this.discountValue = discount();
         this.giftName = generateGiftName();
     }
@@ -45,11 +43,6 @@ public class GiftMenuEvent implements Discount{
     private Name generateGiftName() {
         Drink drink = generateGift();
         return drink.getName();
-    }
-
-    @Override
-    public Price getOriginalPrice() {
-        return originalPrice;
     }
 
     @Override

@@ -7,14 +7,10 @@ import christmas.exception.inside.discount.InvalidStarException;
 
 public class SpecialDiscount implements Discount{
 
-    private final VisitDate visitDate;
-    private final Price originalPrice;
     private final Price discountValue;
 
-    public SpecialDiscount(VisitDate visitDate, Price originalPrice) {
+    public SpecialDiscount(VisitDate visitDate) {
         validate(visitDate);
-        this.visitDate = visitDate;
-        this.originalPrice = originalPrice;
         this.discountValue = discount();
     }
 
@@ -37,11 +33,6 @@ public class SpecialDiscount implements Discount{
 
     private int calculateDiscount() {
         return 1000;
-    }
-
-    @Override
-    public Price getOriginalPrice() {
-        return originalPrice;
     }
 
     @Override

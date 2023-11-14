@@ -7,14 +7,11 @@ import christmas.exception.inside.discount.XmasDiscountUnitException;
 public class ChristmasDiscount implements Discount{
 
     private final VisitDate visitDate;
-    private final Price originalPrice;
     private final Price discountValue;
 
-    public ChristmasDiscount(VisitDate visitDate,
-                             Price originalPrice) {
+    public ChristmasDiscount(VisitDate visitDate) {
         validate(visitDate);
         this.visitDate = visitDate;
-        this.originalPrice = originalPrice;
         discountValue = discount();
     }
 
@@ -42,11 +39,6 @@ public class ChristmasDiscount implements Discount{
 
     private int getDate() {
         return visitDate.getDate();
-    }
-
-    @Override
-    public Price getOriginalPrice() {
-        return originalPrice;
     }
 
     @Override

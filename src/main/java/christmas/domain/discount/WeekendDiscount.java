@@ -12,14 +12,12 @@ import java.util.List;
 
 public class WeekendDiscount implements Discount{
 
-    private final VisitDate visitDate;
     private final Orders orders;
     private final Price originalPrice;
     private final Price discountValue;
 
     public WeekendDiscount(VisitDate visitDate, Orders orders, Price originalPrice) {
         validate(visitDate);
-        this.visitDate = visitDate;
         this.orders = orders;
         this.originalPrice = originalPrice;
         this.discountValue = discount();
@@ -59,11 +57,6 @@ public class WeekendDiscount implements Discount{
         return Main.allName().stream()
                 .map(Name::toString)
                 .toList();
-    }
-
-    @Override
-    public Price getOriginalPrice() {
-        return originalPrice;
     }
 
     @Override
