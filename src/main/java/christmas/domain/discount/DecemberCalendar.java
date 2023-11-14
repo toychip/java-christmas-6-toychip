@@ -47,4 +47,30 @@ public enum DecemberCalendar {
     private final boolean weekday;
     private final boolean weekend;
     private final boolean star;
+
+    public static boolean matchWeekDay(VisitDate visitDate) {
+        int date = visitDate.getDate();
+        for (DecemberCalendar day : DecemberCalendar.values()) {
+            if (day.getDate() == date) {
+                return day.isWeekday();
+            }
+        }
+        return false;
+    }
+
+    private int getDate() {
+        return date.getDate();
+    }
+
+    public boolean isWeekday() {
+        return weekday;
+    }
+
+    public boolean isWeekend() {
+        return weekend;
+    }
+
+    public boolean isStar() {
+        return star;
+    }
 }
