@@ -3,7 +3,6 @@ package christmas.domain.discount;
 import christmas.domain.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.exception.discount.InvalidStarException;
-import christmas.exception.discount.InvalidWeekdayException;
 
 public class SpecialDiscount implements Discount{
 
@@ -35,13 +34,8 @@ public class SpecialDiscount implements Discount{
         return new Price(value);
     }
 
-     private int calculateDiscount() {
+    private int calculateDiscount() {
         return 1000;
-    }
-
-    @Override
-    public VisitDate getVisitDate() {
-        return visitDate;
     }
 
     @Override

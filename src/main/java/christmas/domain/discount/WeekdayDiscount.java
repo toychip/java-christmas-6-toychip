@@ -61,11 +61,6 @@ public class WeekdayDiscount implements Discount{
     }
 
     @Override
-    public VisitDate getVisitDate() {
-        return visitDate;
-    }
-
-    @Override
     public Price getOriginalPrice() {
         return originalPrice;
     }
