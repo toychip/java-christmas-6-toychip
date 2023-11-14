@@ -13,13 +13,11 @@ import java.util.List;
 public class WeekendDiscount implements Discount{
 
     private final Orders orders;
-    private final Price originalPrice;
     private final Price discountValue;
 
-    public WeekendDiscount(VisitDate visitDate, Orders orders, Price originalPrice) {
+    public WeekendDiscount(VisitDate visitDate, Orders orders) {
         validate(visitDate);
         this.orders = orders;
-        this.originalPrice = originalPrice;
         this.discountValue = discount();
     }
 

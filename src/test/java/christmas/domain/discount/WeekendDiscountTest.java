@@ -24,28 +24,25 @@ class WeekendDiscountTest {
 
         // given
         String userOrdersInput = "아이스크림-3, 티본스테이크- 2, 초코케이크-3";
-        int value = 100000;
         VisitDate visitDate = new VisitDate(userDateInput);
         Orders orders = new Orders(userOrdersInput);
-        Price price = new Price(value);
 
         // when && then
         assertThrows(InvalidWeekendException.class,
-                () -> new WeekendDiscount(visitDate, orders, price));
+                () -> new WeekendDiscount(visitDate, orders));
     }
 
     @ParameterizedTest
     @CsvSource("2, '아이스크림-3, 티본스테이크- 2, 초코케이크-3', 100000")
     @DisplayName("주말 할인 값 테스트")
-    void 메뉴_개수에따른_주말_할인값(String userDateInput, String userOrdersInput, int value) {
+    void 메뉴_개수에따른_주말_할인값(String userDateInput, String userOrdersInput) {
 
         // given
         VisitDate visitDate = new VisitDate(userDateInput);
         Orders orders = new Orders(userOrdersInput);
-        Price price = new Price(value);
 
         // when
-        WeekendDiscount weekendDiscount = new WeekendDiscount(visitDate, orders, price);
+        WeekendDiscount weekendDiscount = new WeekendDiscount(visitDate, orders);
         Price discount = weekendDiscount.getDiscountValue();
         int discountValue = discount.getValue();
 
