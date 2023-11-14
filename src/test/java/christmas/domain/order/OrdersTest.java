@@ -8,6 +8,7 @@ import christmas.exception.DateUnitException;
 import christmas.exception.NotExistsMenuException;
 import christmas.exception.OrderDuplicateMenuException;
 import christmas.exception.OrderOnlyDrinkException;
+import christmas.exception.OrderValueUnitException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -54,7 +55,7 @@ class OrdersTest {
         assertEquals(e.getMessage(), DATE_ERROR_MESSAGE);
     }
 
-//    @Test
+    //    @Test
     @ParameterizedTest
     @DisplayName("음료만 주문했을 때 OrderOnlyDrinkException 발생하며 공식 주문 오류 메시지 출력")
     @ValueSource(strings = {"레드와인-3, 샴페인- 1", "제로콜라-3, 레드와인- 1"})
@@ -63,5 +64,23 @@ class OrdersTest {
                 OrderOnlyDrinkException.class,
                 () -> new Orders(userInput));
         assertEquals(ORDER_ERROR_MESSAGE, e.getMessage());
+    }
+
+    @ParameterizedTest
+    @DisplayName("주문 수량이 1미만일 때 OrderValueUnitException 발생하며 공식 주문 오류 메시지 출력")
+    @ValueSource(strings = {"레드와인-3, 티본스테이크- 0"})
+    void 주문_수량이_1미만일_때(String userInput) {
+
+        // 큰 단위 테스트
+        OrderValueUnitException e1 = assertThrows(
+                OrderValueUnitException.class,
+                () -> new Orders(userInput));
+
+        // 작은 단위 테스트
+        OrderValueUnitException e2 = assertThrows(
+                OrderValueUnitException.class,
+                () -> new OrderValue(0));
+        assertEquals(e1.getMessage(), ORDER_ERROR_MESSAGE);
+        assertEquals(e2.getMessage(), ORDER_ERROR_MESSAGE);
     }
 }
