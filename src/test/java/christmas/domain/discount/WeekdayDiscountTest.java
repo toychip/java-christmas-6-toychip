@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import christmas.domain.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
-import christmas.exception.discount.InvalidWeekDayException;
+import christmas.exception.discount.InvalidWeekdayException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -26,7 +26,7 @@ class WeekdayDiscountTest {
         Price price = new Price(value);
 
         // when && then
-        assertThrows(InvalidWeekDayException.class,
+        assertThrows(InvalidWeekdayException.class,
                 () -> new WeekdayDiscount(visitDate, orders, price));
     }
 

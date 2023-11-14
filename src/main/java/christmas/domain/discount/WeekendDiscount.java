@@ -6,7 +6,7 @@ import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Order;
 import christmas.domain.order.Orders;
-import christmas.exception.discount.InvalidWeekDayException;
+import christmas.exception.discount.InvalidWeekendException;
 import java.util.List;
 
 public class WeekendDiscount implements Discount{
@@ -31,7 +31,7 @@ public class WeekendDiscount implements Discount{
     private void validateIsWeekend(VisitDate visitDate) {
         boolean isWeekend = DecemberCalendar.matchWeekend(visitDate);
         if (!isWeekend) {
-            throw new InvalidWeekDayException();
+            throw new InvalidWeekendException();
         }
     }
 
