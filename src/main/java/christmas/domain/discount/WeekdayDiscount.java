@@ -34,12 +34,11 @@ public class WeekdayDiscount implements Discount{
     }
 
     private int calculateDiscount() {
-        int count = orderContainsDesertCount();
-
-        return count * 2023;
+        int totalDesertQuantity = getTotalDesertQuantity();
+        return totalDesertQuantity * 2023;
     }
 
-    private int orderContainsDesertCount() {
+    private int getTotalDesertQuantity() {
         List<String> desertMenuNames = getDesertMenuNames();
         return orders.getOrders().stream()
                 .filter(order -> desertMenuNames.contains(order.orderMenuName()))
