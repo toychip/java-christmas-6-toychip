@@ -35,7 +35,7 @@ public class MoneyManagement {
     private final List<DiscountDetailDto> discountDetails;
     private final Price totalDiscountPrice;
     private final Price totalPostPrice;
-    private final Name Badge;
+    private final EventBadge Badge;
 
     public MoneyManagement(VisitDate visitDate, Orders orders) {
         this.orders = orders;
@@ -188,9 +188,8 @@ public class MoneyManagement {
         return new Price(postValue);
     }
 
-    private Name initBadge() {
-        EventBadge eventBadge = EventBadge.findByPrice(totalDiscountPrice);
-        return eventBadge.getBadgeName();
+    private EventBadge initBadge() {
+        return EventBadge.findByPrice(totalDiscountPrice);
     }
 
     public Price getTotalPrePrice() {
@@ -213,7 +212,7 @@ public class MoneyManagement {
         return totalPostPrice;
     }
 
-    public Name getBadge() {
+    public EventBadge getBadge() {
         return Badge;
     }
 }
