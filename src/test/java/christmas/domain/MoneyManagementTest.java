@@ -3,6 +3,7 @@ package christmas.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import christmas.domain.date.VisitDate;
+import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,4 +36,16 @@ class MoneyManagementTest {
         assertEquals(priceValue, 142000);
     }
 
+    @Test
+    @DisplayName("혜택에 맞는 증정 상품을 증정했지 확인하는 테스트")
+    void giftNameTest(){
+
+        //when
+        Name giftName = moneyManagement.getGiftName();
+        String name = giftName.getName();
+        String 샴페인 = "샴페인";
+
+        //then
+        assertEquals(name, 샴페인);
+    }
 }
