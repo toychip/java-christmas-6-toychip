@@ -11,6 +11,8 @@ import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Order;
 import christmas.domain.order.Orders;
+import christmas.exception.outside.DateUnitException;
+import christmas.exception.outside.order.OrderParentsException;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.List;
@@ -32,15 +34,25 @@ public class ChristmasController {
     }
 
     private VisitDate initVisitDate() {
-        String userDate = inputView.readDate();
-        return new VisitDate(userDate);
+        try {
+            String userDate = inputView.readDate();
+            return new VisitDate(userDate);
+        } catch (DateUnitException de) {
+            outputView.printMessage(de.getMessage());
+            return initVisitDate();
+        }
     }
 
     private Orders initOrders() {
-        String userMenu = inputView.readMenu();
-        int date = visitDate.getDate();
-        outputView.preview(date);
-        return new Orders(userMenu);
+        try {
+            String userMenu = inputView.readMenu();
+            int date = visitDate.getDate();
+            outputView.preview(date);
+            return new Orders(userMenu);
+        } catch (OrderParentsException oe) {
+            outputView.printMessage(oe.getMessage());
+            return initOrders();
+        }
     }
 
     private MoneyManagement initMoneyManagement() {
