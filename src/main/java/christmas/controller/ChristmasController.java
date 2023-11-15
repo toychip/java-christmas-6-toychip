@@ -54,9 +54,23 @@ public class ChristmasController {
     }
 
     private void totalPrePrice() {
-        Price totalPrePrice = moneyManagement.getTotalPrePrice();
-        int priceValue = totalPrePrice.value();
-        outputView.preDiscount(priceValue);
+        outputView.giftMenu();
+        GiftMenuDto giftMenu = moneyManagement.getGiftMenu();
+
+        Name menuName = giftMenu.menuName();
+        String nameValue = menuName.name();
+        Price quantity = giftMenu.quantity();
+        int quantityValue = quantity.value();
+        judgeGiftMenu(nameValue, quantityValue);
+    }
+
+    private void judgeGiftMenu(String nameValue, int quantityValue) {
+        if(quantityValue <= 0){
+            outputView.printGiftMenu(nameValue);
+        }
+        if (quantityValue > 0) {
+            outputView.printGiftMenu(nameValue, quantityValue);
+        }
     }
 
     private void giftMenu() {
