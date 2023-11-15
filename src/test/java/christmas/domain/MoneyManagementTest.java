@@ -20,7 +20,7 @@ class MoneyManagementTest {
     @BeforeEach
     void setUp() {
         orders = new Orders("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
-        visitDate = new VisitDate("13");
+        visitDate = new VisitDate("3");
         moneyManagement = new MoneyManagement(visitDate, orders);
     }
 
@@ -48,4 +48,17 @@ class MoneyManagementTest {
         //then
         assertEquals(name, 샴페인);
     }
+
+    @Test
+    @DisplayName("총 혜택 금액 테스트")
+    void totalDiscountPriceTest(){
+
+        //when
+        Price totalDiscountPrice = moneyManagement.getTotalDiscountPrice();
+        int value = totalDiscountPrice.getValue();
+
+        //then
+        assertEquals(value, 31246);
+    }
+
 }
