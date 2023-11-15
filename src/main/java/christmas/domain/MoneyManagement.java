@@ -30,9 +30,9 @@ public class MoneyManagement {
     private final VisitDate visitDate;
 
     private final Price totalPrePrice;
-    private final GiftMenuEvent giftMenu;
-    private final List<Price> discountDetails;
     private final Price totalDiscountPrice;
+    private final List<Price> discountDetails;
+    private final Name giftName;
     private final Price totalPostPrice;
     private final Name Badge;
 
@@ -40,15 +40,15 @@ public class MoneyManagement {
     public MoneyManagement(VisitDate visitDate, Orders orders) {
         this.orders = orders;
         this.visitDate = visitDate;
-        this.totalPrePrice = getTotalPrePrice();
-        this.giftMenu = canGiftMenu();
-        this.discountDetails = getDiscountDetails();
-        this.totalDiscountPrice = getTotalDiscountPrice();
-        this.totalPostPrice = getTotalPostPrice();
+        totalPrePrice = getTotalPrePrice();
+        giftName = getGiftName();
+        discountDetails = getDiscountDetails();
+        totalDiscountPrice = getTotalDiscountPrice();
+        totalPostPrice = getTotalPostPrice();
         Badge = getBadge();
     }
 
-    private static Price notDiscount() {
+    private Price notDiscount() {
         return new Price(0);
     }
 
@@ -88,9 +88,15 @@ public class MoneyManagement {
                 .toList();
     }
 
-    private GiftMenuEvent canGiftMenu() {
-        Price totalPrePrice = getTotalPrePrice();
-        return new GiftMenuEvent(totalPrePrice);
+    private Name getGiftName() {
+        DiscountDto discountDto = getDiscountDto();
+        GiftMenuEvent giftMenuEvent = getGiftMenuEvent(discountDto);
+        if (giftMenuEvent != null) {
+            String giftName = giftMenuEvent.getGiftName();
+            return new Name(giftName);
+        }
+        String nothing = "없음";
+        return new Name(nothing);
     }
 
     private DiscountDto getDiscountDto() {
@@ -108,12 +114,12 @@ public class MoneyManagement {
     private Price getTotalDiscountPrice() {
         DiscountDto discountDto = getDiscountDto();
         Price xmasDiscount = getXmasDiscount(discountDto);
-        Price giftMenuEvent = getGiftMenuEvent(discountDto);
+        Price giftPrice = getGiftPrice(discountDto);
         Price specialDiscount = getSpecialDiscount(discountDto);
         Price weekdayDiscount = getWeekdayDiscount(discountDto);
         Price weekendDiscount = getWeekendDiscount(discountDto);
 
-        int totalDiscountPrice = Stream.of(xmasDiscount, giftMenuEvent, specialDiscount, weekdayDiscount, weekendDiscount)
+        int totalDiscountPrice = Stream.of(xmasDiscount, giftPrice, specialDiscount, weekdayDiscount, weekendDiscount)
                 .mapToInt(Price::getValue)
                 .sum();
 
@@ -128,11 +134,18 @@ public class MoneyManagement {
         return notDiscount();
     }
 
-    private Price getGiftMenuEvent(DiscountDto discountDto) {
+    private GiftMenuEvent getGiftMenuEvent(DiscountDto discountDto) {
         Price orderPrice = getTotalPrePrice();
         if (judgeGiftMenuEvent(orderPrice) != null) {
-            GiftMenuEvent giftMenuEvent = discountDto.getGiftMenuEvent();
-            return giftMenuEvent.discount();
+            return discountDto.getGiftMenuEvent();
+        }
+        return null;
+    }
+
+    private Price getGiftPrice(DiscountDto discountDto) {
+        GiftMenuEvent giftMenu = getGiftMenuEvent(discountDto);
+        if (giftMenu != null) {
+            return giftMenu.getDiscountValue();
         }
         return notDiscount();
     }
@@ -162,14 +175,17 @@ public class MoneyManagement {
     }
 
     private List<Price> getDiscountDetails() {
+        // TODO
         return null;
     }
 
     private Price getTotalPostPrice() {
-        return null;
+        int postValue = totalPrePrice.getValue() - totalDiscountPrice.getValue();
+        return new Price(postValue);
     }
 
     private Name getBadge() {
+        // TODO Badge 클래스 생성
         return null;
     }
 }
