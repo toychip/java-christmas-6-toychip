@@ -32,13 +32,51 @@ public class OutputView {
         printMessage(message);
     }
 
+    public void printGiftMenu(String name) {
+        printMessage(name);
+    }
+
     public void benefitTitle() {
         String message = "<혜택 내역>";
         printMessage(message);
     }
 
+    public void benefitDetailXmas(int amount) {
+        String message = "크리스마스 디데이 할인: -" + amount + "원";
+        printMessage(message);
+    }
+
+    public void benefitWeekday(int amount) {
+        String message = "평일 할인: -" + amount + "원";
+        printMessage(message);
+    }
+
+    public void benefitWeekend(int amount) {
+        String message = "주말 할인: -" + amount + "원";
+        printMessage(message);
+    }
+
+    public void benefitSpecial(int amount) {
+        String message = "특별 할인: -" + amount + "원";
+        printMessage(message);
+    }
+
+    public void benefitGiftEvent(int amount) {
+        String message = "증정 이벤트: -" + amount + "원";
+        printMessage(message);
+    }
+
     public void totalDiscountTitle() {
         String message = "<총혜택 금액>";
+        printMessage(message);
+    }
+
+    public void totalDiscountAmount(int amount) {
+        String message = amount + "원";
+        if (amount > 0) {
+            String head = "-";
+            message = head + message;
+        }
         printMessage(message);
     }
 
@@ -52,11 +90,11 @@ public class OutputView {
         printMessage(message);
     }
 
-    private void printMessage(String message) {
+    public void printMessage(String message) {
         System.out.println(message);
     }
 
-    private void printAmount(int amount) {
+    public void printAmount(int amount) {
         System.out.println(amount + "원");
     }
 }
