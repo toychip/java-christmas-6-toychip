@@ -172,7 +172,11 @@ public class ChristmasController {
     }
 
     private void badge() {
+        outputView.eventBadgeTitle();
+        EventBadge badge = moneyManagement.getBadge();
+        Name badgeName = badge.getBadgeName();
+        String name = badgeName.name();
+        outputView.printMessage(name);
     }
-
 
 }
