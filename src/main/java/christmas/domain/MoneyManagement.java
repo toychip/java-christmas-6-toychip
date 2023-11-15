@@ -181,6 +181,13 @@ public class MoneyManagement {
 
     private Price initTotalPostPrice() {
         int postValue = totalPrePrice.getValue() - totalDiscountPrice.getValue();
+
+        DiscountDto discountDto = getDiscountDto();
+        GiftMenuEvent giftMenuEvent = getGiftMenuEvent(discountDto);
+        if (giftMenuEvent != null) {
+            postValue = postValue + 25000;
+        }
+
         return new Price(postValue);
     }
 
