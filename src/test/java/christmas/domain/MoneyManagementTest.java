@@ -6,6 +6,7 @@ import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,5 +61,29 @@ class MoneyManagementTest {
         //then
         assertEquals(value, 31246);
     }
+
+    @Test
+    @DisplayName("할인 후 예상 결제 금액 테스트")
+    void getTotalPostPriceTest(){
+
+        //when
+        Price totalPostPrice = moneyManagement.getTotalPostPrice();
+        int value = totalPostPrice.getValue();
+
+        //then
+        assertEquals(value, 135754);
+    }
+
+    /*
+    @Test
+    @DisplayName("혜택에 맞는 증정 상품을 증정했지 확인하는 테스트")
+    void discountDetailTest(){
+
+        List<Price> discountDetails = moneyManagement.getDiscountDetails();
+        discountDetails.stream().mapToInt(Price::getValue)
+                .forEach(System.out::println);
+    }
+
+     */
 
 }
