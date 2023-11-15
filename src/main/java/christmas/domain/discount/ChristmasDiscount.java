@@ -45,4 +45,9 @@ public class ChristmasDiscount implements Discount{
     public Price getDiscountValue() {
         return discountValue;
     }
+
+    @Override
+    public String toString() {
+        return "ChristmasDiscount";
+    }
 }

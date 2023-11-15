@@ -61,4 +61,9 @@ public class WeekendDiscount implements Discount{
     public Price getDiscountValue() {
         return discountValue;
     }
+
+    @Override
+    public String toString() {
+        return "WeekendDiscount";
+    }
 }

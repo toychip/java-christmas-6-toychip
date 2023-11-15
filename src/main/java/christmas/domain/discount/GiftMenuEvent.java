@@ -53,4 +53,9 @@ public class GiftMenuEvent implements Discount{
     public String getGiftName() {
         return giftName.getName();
     }
+
+    @Override
+    public String toString() {
+        return "GiftMenuEvent";
+    }
 }
