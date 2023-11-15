@@ -54,6 +54,12 @@ public class ChristmasController {
     }
 
     private void totalPrePrice() {
+        Price totalPrePrice = moneyManagement.getTotalPrePrice();
+        int priceValue = totalPrePrice.value();
+        outputView.preDiscount(priceValue);
+    }
+
+    private void giftMenu() {
         outputView.giftMenu();
         GiftMenuDto giftMenu = moneyManagement.getGiftMenu();
 
@@ -71,9 +77,6 @@ public class ChristmasController {
         if (quantityValue > 0) {
             outputView.printGiftMenu(nameValue, quantityValue);
         }
-    }
-
-    private void giftMenu() {
     }
 
     private void benefitDetail() {
