@@ -124,4 +124,16 @@ class MoneyManagementTest {
         assertEquals(christmasDiscountValue, 1000);
     }
 
+    @Test
+    @DisplayName("할인 상세 - 상품 증정 금액 테스트")
+    void discountDetail_GiftMenuEventTest(){
+
+        List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
+        int christmasDiscountValue = discountDetails.stream()
+                .filter(type -> type.discountName().getName().equals("GiftMenuEvent"))
+                .mapToInt(type -> type.discountPrice().getValue())
+                .sum();
+        assertEquals(christmasDiscountValue, 25000);
+    }
+
 }
