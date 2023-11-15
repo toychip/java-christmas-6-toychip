@@ -1,6 +1,8 @@
 package christmas.view;
 
 import static christmas.static_class.CommonStatic.KOREA_BILL_UNIT;
+import static christmas.static_class.CommonStatic.QUANTITY_UNIT;
+import static christmas.static_class.CommonStatic.SPACE;
 
 public class OutputView {
     public void introduce() {
@@ -11,10 +13,16 @@ public class OutputView {
     public void preview(int date) {
         String message = String.format("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", date);
         printMessage(message);
+        enter();
     }
 
     public void orderMenuTitle() {
         String message = "<주문 메뉴>";
+        printMessage(message);
+    }
+
+    public void orderMenuPrint(String orderMenu, int orderValue) {
+        String message = orderMenu + SPACE + orderValue + QUANTITY_UNIT;
         printMessage(message);
     }
 
@@ -30,9 +38,8 @@ public class OutputView {
     }
 
     public void printGiftMenu(String name, int quantity) {
-        String message = name + " " + quantity + "개";
+        String message = name + SPACE + quantity + QUANTITY_UNIT;
         printMessage(message);
-        enter();
     }
 
     public void printGiftMenu(String name) {

@@ -9,6 +9,7 @@ import christmas.domain.date.VisitDate;
 import christmas.domain.discount.EventBadge;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
+import christmas.domain.order.Order;
 import christmas.domain.order.Orders;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -22,6 +23,7 @@ public class ChristmasController {
     private final MoneyManagement moneyManagement;
 
     public ChristmasController(final InputView inputView, final OutputView outputView) {
+        outputView.introduce();
         this.inputView = inputView;
         this.outputView = outputView;
         visitDate = initVisitDate();
@@ -46,7 +48,7 @@ public class ChristmasController {
     }
 
     public void run() {
-        outputView.introduce();
+        orderMenu();
         totalPrePrice();
         giftMenu();
         benefitDetail();
@@ -54,6 +56,19 @@ public class ChristmasController {
         totalPostPrice();
         badge();
         inputView.closeConsole();
+    }
+
+    private void orderMenu() {
+        outputView.orderMenuTitle();
+        orders.getOrders()
+                .forEach(this::orderMenuList);
+        outputView.enter();
+    }
+
+    private void orderMenuList(Order order) {
+        String orderMenu = order.orderMenu().menuName();
+        int quantity = order.orderValue().quantity();
+        outputView.orderMenuPrint(orderMenu, quantity);
     }
 
     private void totalPrePrice() {
@@ -80,6 +95,7 @@ public class ChristmasController {
         if (quantityValue > 0) {
             outputView.printGiftMenu(nameValue, quantityValue);
         }
+        outputView.enter();
     }
 
     private void benefitDetail() {
