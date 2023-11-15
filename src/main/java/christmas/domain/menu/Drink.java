@@ -15,21 +15,19 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public enum Drink implements Menu {
-    ZERO_COLA(new Name(ZERO_COLA_NAME), new Price(ZERO_COLA_PRICE), false),
-    RED_WINE(new Name(RED_WINE_NAME), new Price(RED_WINE_PRICE), false),
-    CHAMPAGNE(new Name(CHAMPAGNE_NAME), new Price(CHAMPAGNE_PRICE), true);
+    ZERO_COLA(new Name(ZERO_COLA_NAME), new Price(ZERO_COLA_PRICE)),
+    RED_WINE(new Name(RED_WINE_NAME), new Price(RED_WINE_PRICE)),
+    CHAMPAGNE(new Name(CHAMPAGNE_NAME), new Price(CHAMPAGNE_PRICE));
 
     private final Name name;
     private final Price price;
-    private final boolean giftOption;
 
-    Drink(final Name name, final Price price, final boolean giftOption) {
+    Drink(final Name name, final Price price) {
         this.name = name;
         this.price = price;
-        this.giftOption = giftOption;
     }
 
-//    @Override
+
     public static List<Name> allName() {
         return Arrays.stream(Drink.values())
                 .map(Drink::getName)
@@ -39,7 +37,7 @@ public enum Drink implements Menu {
     public static List<String> allNameString() {
         return Arrays.stream(Drink.values())
                 .map(Drink::getName)
-                .map(Name::getName)
+                .map(Name::name)
                 .toList();
     }
 
@@ -59,10 +57,6 @@ public enum Drink implements Menu {
     @Override
     public Price getPrice() {
         return price;
-    }
-
-    public boolean isGiftOption() {
-        return giftOption;
     }
 
 }

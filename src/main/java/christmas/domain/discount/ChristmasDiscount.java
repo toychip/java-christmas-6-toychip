@@ -9,7 +9,7 @@ import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.exception.inside.discount.XmasDiscountUnitException;
 
-public class ChristmasDiscount implements Discount{
+public class ChristmasDiscount implements Discount {
 
     private final VisitDate visitDate;
     private final Price discountValue;

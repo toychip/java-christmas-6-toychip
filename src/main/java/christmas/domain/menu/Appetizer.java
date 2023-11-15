@@ -28,7 +28,6 @@ public enum Appetizer implements Menu {
     }
 
 
-//    @Override
     public static List<Name> allName() {
         return Arrays.stream(Appetizer.values())
                 .map(Appetizer::getName)

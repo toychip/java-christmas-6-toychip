@@ -2,21 +2,7 @@ package christmas.domain.menu.component;
 
 import java.util.Objects;
 
-public class Name {
-    private final String name;
-
-    public Name(final String name) {
-        validate(name);
-        this.name = name;
-    }
-
-    private void validate(final String name) {
-        // ... 이름이 에피타이저, 메인, 디저트, 음료에 포함되어있는지 확인
-    }
-
-    public String getName() {
-        return name;
-    }
+public record Name(String name) {
 
     @Override
     public String toString() {
@@ -32,11 +18,11 @@ public class Name {
             return false;
         }
         Name name1 = (Name) o;
-        return Objects.equals(getName(), name1.getName());
+        return Objects.equals(name(), name1.name());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(name());
     }
 }

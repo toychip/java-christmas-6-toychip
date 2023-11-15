@@ -24,7 +24,6 @@ public enum Desert implements Menu {
         this.price = price;
     }
 
-//    @Override
     public static List<Name> allName() {
         return Arrays.stream(Desert.values())
                 .map(Desert::getName)

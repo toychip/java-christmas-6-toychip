@@ -37,7 +37,7 @@ class GiftMenuEventTest {
         // when
         GiftMenuEvent giftMenuEvent = new GiftMenuEvent(price);
         Price discountPrice = giftMenuEvent.getDiscountValue();
-        int priceValue = discountPrice.getValue();
+        int priceValue = discountPrice.value();
 
         //then
         assertEquals(priceValue, 25000);
@@ -53,7 +53,7 @@ class GiftMenuEventTest {
 
         // when
         GiftMenuEvent giftMenuEvent = new GiftMenuEvent(price);
-        String giftName = giftMenuEvent.getGiftName().getName();
+        String giftName = giftMenuEvent.getGiftName().name();
 
         //then
         assertEquals(giftName, "샴페인");

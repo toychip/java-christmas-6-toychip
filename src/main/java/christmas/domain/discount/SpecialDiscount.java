@@ -3,12 +3,12 @@ package christmas.domain.discount;
 import static christmas.static_class.DiscountStatic.SPECIAL_DISCOUNT_NAME;
 import static christmas.static_class.DiscountStatic.SPECIAL_DISCOUNT_VALUE;
 
-import christmas.domain.date.VisitDate;
 import christmas.domain.date.DecemberCalendar;
+import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.exception.inside.discount.InvalidStarException;
 
-public class SpecialDiscount implements Discount{
+public class SpecialDiscount implements Discount {
 
     private final Price discountValue;
 

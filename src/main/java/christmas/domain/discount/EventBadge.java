@@ -16,8 +16,7 @@ public enum EventBadge {
     NONE(new Name(NONE_NAME), new Price(0)),
     STAR(new Name(STAR_NAME), new Price(STAR_PRICE)),
     TREE(new Name(TREE_NAME), new Price(TREE_PRICE)),
-    SANTA(new Name(SANTA_NAME), new Price(SANTA_PRICE))
-    ;
+    SANTA(new Name(SANTA_NAME), new Price(SANTA_PRICE));
     private final Name badgeName;
     private final Price totalDiscountPrice;
 
@@ -27,15 +26,15 @@ public enum EventBadge {
     }
 
     public static EventBadge findByPrice(Price price) {
-        if (price.getValue() > getSantaCriteria().getValue()) {
+        if (price.value() > getSantaCriteria().value()) {
             return SANTA;
         }
 
-        if (price.getValue() > getTreeCriteria().getValue()) {
+        if (price.value() > getTreeCriteria().value()) {
             return TREE;
         }
 
-        if (price.getValue() > getStarCriteria().getValue()) {
+        if (price.value() > getStarCriteria().value()) {
             return STAR;
         }
 

@@ -23,7 +23,7 @@ class ChristmasDiscountTest {
         // when
         ChristmasDiscount xmasDiscount = new ChristmasDiscount(date);
         Price discountPrice = xmasDiscount.getDiscountValue();
-        int discountValue = discountPrice.getValue();
+        int discountValue = discountPrice.value();
 
         // then
         assertEquals(discountValue, expectDiscountValue);

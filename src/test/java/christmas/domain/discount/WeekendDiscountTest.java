@@ -44,7 +44,7 @@ class WeekendDiscountTest {
         // when
         WeekendDiscount weekendDiscount = new WeekendDiscount(visitDate, orders);
         Price discount = weekendDiscount.getDiscountValue();
-        int discountValue = discount.getValue();
+        int discountValue = discount.value();
 
         // then
         assertEquals(discountValue, 2023 * 2);

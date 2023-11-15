@@ -26,7 +26,7 @@ public record DiscountDto(ChristmasDiscount christmasDiscount, GiftMenuEvent gif
     }
 
     static GiftMenuEvent judgeGiftMenuEvent(Price price) {
-        if (price.getValue() >= GIFT_EVENT_CRITERIA_VALUE) {
+        if (price.value() >= GIFT_EVENT_CRITERIA_VALUE) {
             return new GiftMenuEvent(price);
         }
         return null;

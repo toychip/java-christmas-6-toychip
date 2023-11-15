@@ -3,8 +3,8 @@ package christmas.domain.discount;
 import static christmas.static_class.DiscountStatic.WEEKDAY_DISCOUNT_NAME;
 import static christmas.static_class.DiscountStatic.WEEK_DISCOUNT_UNIT;
 
-import christmas.domain.date.VisitDate;
 import christmas.domain.date.DecemberCalendar;
+import christmas.domain.date.VisitDate;
 import christmas.domain.menu.Desert;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
@@ -13,7 +13,7 @@ import christmas.domain.order.Orders;
 import christmas.exception.inside.discount.InvalidWeekdayException;
 import java.util.List;
 
-public class WeekdayDiscount implements Discount{
+public class WeekdayDiscount implements Discount {
 
     private final Orders orders;
     private final Price discountValue;

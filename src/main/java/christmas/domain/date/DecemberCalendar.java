@@ -31,20 +31,18 @@ public enum DecemberCalendar {
     DAY_28(new VisitDate("28"), true, false, false),
     DAY_29(new VisitDate("29"), false, true, false),
     DAY_30(new VisitDate("30"), false, true, false),
-    DAY_31(new VisitDate("31"), true, false, true)
-    ;
+    DAY_31(new VisitDate("31"), true, false, true);
 
+    private final VisitDate date;
+    private final boolean weekday;
+    private final boolean weekend;
+    private final boolean star;
     DecemberCalendar(VisitDate date, boolean weekday, boolean weekend, boolean star) {
         this.date = date;
         this.weekday = weekday;
         this.weekend = weekend;
         this.star = star;
     }
-
-    private final VisitDate date;
-    private final boolean weekday;
-    private final boolean weekend;
-    private final boolean star;
 
     public static boolean matchWeekday(VisitDate visitDate) {
         int date = visitDate.getDate();

@@ -30,7 +30,7 @@ public enum Main implements Menu {
         this.price = price;
     }
 
-//    @Override
+
     public static List<Name> allName() {
         return Arrays.stream(Main.values())
                 .map(Main::getName)

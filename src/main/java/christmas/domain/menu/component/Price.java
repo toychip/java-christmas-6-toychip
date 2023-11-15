@@ -3,22 +3,15 @@ package christmas.domain.menu.component;
 import christmas.exception.inside.PriceUnitException;
 import java.util.Objects;
 
-public class Price {
-    private final int value;
-
-    public Price(final int value) {
+public record Price(int value) {
+    public Price {
         validate(value);
-        this.value = value;
     }
 
     private void validate(final int value) {
         if (value < 0) {
             throw new PriceUnitException();
         }
-    }
-
-    public int getValue() {
-        return value;
     }
 
     @Override
@@ -30,11 +23,11 @@ public class Price {
             return false;
         }
         Price price = (Price) o;
-        return getValue() == price.getValue();
+        return value() == price.value();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getValue());
+        return Objects.hash(value());
     }
 }

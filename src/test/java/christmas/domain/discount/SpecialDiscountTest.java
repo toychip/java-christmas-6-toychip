@@ -39,7 +39,7 @@ class SpecialDiscountTest {
         // when
         SpecialDiscount specialDiscount = new SpecialDiscount(visitDate);
         Price discountPrice = specialDiscount.getDiscountValue();
-        int discountValue = discountPrice.getValue();
+        int discountValue = discountPrice.value();
 
         //then
         assertEquals(discountValue, 1000);

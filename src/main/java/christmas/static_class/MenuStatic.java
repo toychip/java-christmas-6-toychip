@@ -2,10 +2,6 @@ package christmas.static_class;
 
 public final class MenuStatic {
 
-    private MenuStatic() {
-        throw new AssertionError("인스턴스화 금지");
-    }
-
     // Appetizer Menu 사용 상수
     public static final String PINE_MUSHROOM_SOUP_NAME = "양송이수프";
     public static final int PINE_MUSHROOM_SOUP_PRICE = 6000;
@@ -48,5 +44,9 @@ public final class MenuStatic {
 
     public static final int CHRISTMAS_PASTA_PRICE = 25000;
     public static final String CHRISTMAS_PASTA_NAME = "크리스마스파스타";
+
+    private MenuStatic() {
+        throw new AssertionError("인스턴스화 금지");
+    }
 
 }

@@ -9,7 +9,7 @@ import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.exception.inside.discount.InvalidGiftMenuException;
 
-public class GiftMenuEvent implements Discount{
+public class GiftMenuEvent implements Discount {
     private final Price discountValue;
     private final Name giftName;
     private final Price quantity;
@@ -32,7 +32,7 @@ public class GiftMenuEvent implements Discount{
     }
 
     private void validateExceededAmount(Price originalPrice) {
-        int value = originalPrice.getValue();
+        int value = originalPrice.value();
         if (value < GIFT_EVENT_CRITERIA_VALUE) {
             throw new InvalidGiftMenuException();
         }

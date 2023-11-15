@@ -66,11 +66,11 @@ public class MoneyManagement {
         List<Menu> allMenu = getAllMenu();
         return allMenu.stream()
                 .filter(menu -> {
-                    String inputMenu = menu.getName().getName();
+                    String inputMenu = menu.getName().name();
                     return menuName.equals(inputMenu);
                 })
                 .findAny()
-                .map(menu -> menu.getPrice().getValue())
+                .map(menu -> menu.getPrice().value())
                 .orElseThrow(NotExistsMenuInsideException::new);
     }
 
@@ -133,10 +133,6 @@ public class MoneyManagement {
         return null;
     }
 
-    private Price notDiscount() {
-        return new Price(0);
-    }
-
     private GiftMenuEvent getGiftMenuEvent(DiscountDto discountDto) {
         Price orderPrice = initTotalPrePrice();
         if (judgeGiftMenuEvent(orderPrice) != null) {
@@ -171,14 +167,14 @@ public class MoneyManagement {
         List<DiscountDetailDto> discountDetailDtos = initDiscountDetails();
         int totalDiscountPrice = discountDetailDtos.stream()
                 .filter(Objects::nonNull)
-                .mapToInt(type -> type.discountPrice().getValue())
+                .mapToInt(type -> type.discountPrice().value())
                 .sum();
 
         return new Price(totalDiscountPrice);
     }
 
     private Price initTotalPostPrice() {
-        int postValue = totalPrePrice.getValue() - totalDiscountPrice.getValue();
+        int postValue = totalPrePrice.value() - totalDiscountPrice.value();
 
         DiscountDto discountDto = getDiscountDto();
         GiftMenuEvent giftMenuEvent = getGiftMenuEvent(discountDto);

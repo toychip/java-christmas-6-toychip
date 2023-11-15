@@ -2,10 +2,6 @@ package christmas.static_class;
 
 public final class DiscountStatic {
 
-    private DiscountStatic() {
-        throw new AssertionError("인스턴스화 금지");
-    }
-
     // 크리스마스 할인 사용 상수
     public static final int XMAS_DATE = 25;
     public static final int XMAS_MULTIPLE_UNIT = 100;
@@ -22,6 +18,7 @@ public final class DiscountStatic {
     public static final int SANTA_PRICE = 20000;
     public static final String SANTA_NAME = "산타";
 
+
     // 증정 이벤트 사용 상수
     public static final int QUANTITY = 1;
     public static final int GIFT_EVENT_CRITERIA_VALUE = 120000;
@@ -33,9 +30,13 @@ public final class DiscountStatic {
     public static final int SPECIAL_DISCOUNT_VALUE = 1000;
     public static final String SPECIAL_DISCOUNT_NAME= "SpecialDiscount";
 
+
     // 주말, 평일 할인 사용 상수
     public static final int WEEK_DISCOUNT_UNIT = 2023;
     public static final String WEEKDAY_DISCOUNT_NAME= "WeekdayDiscount";
     public static final String WEEKEND_DISCOUNT_NAME= "WeekendDiscount";
 
+    private DiscountStatic() {
+        throw new AssertionError("인스턴스화 금지");
+    }
 }
