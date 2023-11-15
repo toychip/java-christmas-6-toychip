@@ -7,7 +7,6 @@ import static christmas.static_class.MenuStatic.PINE_MUSHROOM_SOUP_PRICE;
 import static christmas.static_class.MenuStatic.TAPAS_NAME;
 import static christmas.static_class.MenuStatic.TAPAS_PRICE;
 
-import christmas.domain.menu.component.Menu;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;

@@ -1,5 +1,6 @@
 package christmas.domain.discount;
 
+import static christmas.static_class.DiscountStatic.XMAS_DATE;
 import static christmas.static_class.DiscountStatic.XMAS_DISCOUNT_NAME;
 import static christmas.static_class.DiscountStatic.XMAS_MULTIPLE_UNIT;
 import static christmas.static_class.DiscountStatic.XMAS_MinusUnit;
@@ -8,6 +9,7 @@ import static christmas.static_class.DiscountStatic.XMAS_PLUS_UNIT;
 import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.exception.inside.discount.XmasDiscountUnitException;
+import christmas.static_class.DiscountStatic;
 
 public class ChristmasDiscount implements Discount {
 
@@ -26,7 +28,7 @@ public class ChristmasDiscount implements Discount {
 
     private void validateXmasPassed(VisitDate visitDate) {
         int date = visitDate.getDate();
-        if (date > 25) {
+        if (date > XMAS_DATE) {
             throw new XmasDiscountUnitException();
         }
     }

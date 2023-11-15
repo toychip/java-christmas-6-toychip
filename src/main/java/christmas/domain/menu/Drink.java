@@ -7,7 +7,6 @@ import static christmas.static_class.MenuStatic.RED_WINE_PRICE;
 import static christmas.static_class.MenuStatic.ZERO_COLA_NAME;
 import static christmas.static_class.MenuStatic.ZERO_COLA_PRICE;
 
-import christmas.domain.menu.component.Menu;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;

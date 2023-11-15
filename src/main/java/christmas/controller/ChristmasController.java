@@ -30,7 +30,13 @@ public class ChristmasController {
         this.outputView = outputView;
         visitDate = initVisitDate();
         orders = initOrders();
+        previewDate(outputView);
         moneyManagement = initMoneyManagement();
+    }
+
+    private void previewDate(OutputView outputView) {
+        int date = visitDate.getDate();
+        outputView.preview(date);
     }
 
     private VisitDate initVisitDate() {
@@ -46,8 +52,6 @@ public class ChristmasController {
     private Orders initOrders() {
         try {
             String userMenu = inputView.readMenu();
-            int date = visitDate.getDate();
-            outputView.preview(date);
             return new Orders(userMenu);
         } catch (OrderParentsException oe) {
             outputView.printMessage(oe.getMessage());

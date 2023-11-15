@@ -18,7 +18,7 @@ import christmas.domain.menu.Appetizer;
 import christmas.domain.menu.Desert;
 import christmas.domain.menu.Drink;
 import christmas.domain.menu.Main;
-import christmas.domain.menu.component.Menu;
+import christmas.domain.menu.Menu;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;

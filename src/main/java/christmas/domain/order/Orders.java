@@ -106,7 +106,7 @@ public class Orders {
     private String getMenuNameFromParts(final List<String> parts) {
         try {
             return parts.get(MENU_LOCATION);
-        } catch (NumberFormatException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             throw new OrderFormatException();
         }
     }
@@ -114,7 +114,7 @@ public class Orders {
     private int getQuantityFromParts(final List<String> parts) {
         try {
             return Integer.parseInt(parts.get(QUANTITY_LOCATION));
-        } catch (NumberFormatException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             throw new OrderFormatException();
         }
     }

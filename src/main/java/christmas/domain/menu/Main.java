@@ -9,7 +9,6 @@ import static christmas.static_class.MenuStatic.SEAFOOD_PASTA_PRICE;
 import static christmas.static_class.MenuStatic.T_BONE_STEAK_NAME;
 import static christmas.static_class.MenuStatic.T_BONE_STEAK_PRICE;
 
-import christmas.domain.menu.component.Menu;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;

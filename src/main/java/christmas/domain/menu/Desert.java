@@ -5,7 +5,6 @@ import static christmas.static_class.MenuStatic.CHOCO_CAKE_PRICE;
 import static christmas.static_class.MenuStatic.ICE_CREAM_NAME;
 import static christmas.static_class.MenuStatic.ICE_CREAM_PRICE;
 
-import christmas.domain.menu.component.Menu;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import java.util.Arrays;
