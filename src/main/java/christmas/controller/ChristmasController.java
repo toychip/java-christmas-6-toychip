@@ -1,16 +1,10 @@
 package christmas.controller;
 
-import christmas.domain.DiscountDetailDto;
-import christmas.domain.GiftMenuDto;
 import christmas.domain.MoneyManagement;
 import christmas.domain.date.VisitDate;
-import christmas.domain.discount.EventBadge;
-import christmas.domain.menu.component.Name;
-import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import java.util.List;
 
 public class ChristmasController {
     private final InputView inputView;
@@ -33,7 +27,10 @@ public class ChristmasController {
     }
 
     private Orders initOrders() {
-        return null;
+        String userMenu = inputView.readMenu();
+        int date = visitDate.getDate();
+        outputView.preview(date);
+        return new Orders(userMenu);
     }
 
     private MoneyManagement initMoneyManagement() {
