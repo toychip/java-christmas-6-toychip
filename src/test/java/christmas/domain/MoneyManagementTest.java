@@ -98,4 +98,17 @@ class MoneyManagementTest {
         assertEquals(christmasDiscountValue, 1200);
     }
 
+
+    @Test
+    @DisplayName("할인 상세 - 평일 할인 테스트")
+    void discountDetailWeekdayTest(){
+
+        List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
+        int christmasDiscountValue = discountDetails.stream()
+                .filter(type -> type.discountName().getName().equals("WeekdayDiscount"))
+                .mapToInt(type -> type.discountPrice().getValue())
+                .sum();
+        assertEquals(christmasDiscountValue, 4046);
+    }
+
 }
