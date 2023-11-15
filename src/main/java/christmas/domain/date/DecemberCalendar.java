@@ -37,6 +37,7 @@ public enum DecemberCalendar {
     private final boolean weekday;
     private final boolean weekend;
     private final boolean star;
+
     DecemberCalendar(VisitDate date, boolean weekday, boolean weekend, boolean star) {
         this.date = date;
         this.weekday = weekday;

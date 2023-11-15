@@ -9,7 +9,6 @@ import static christmas.static_class.DiscountStatic.XMAS_PLUS_UNIT;
 import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.exception.inside.discount.XmasDiscountUnitException;
-import christmas.static_class.DiscountStatic;
 
 public class ChristmasDiscount implements Discount {
 

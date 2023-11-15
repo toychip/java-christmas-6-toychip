@@ -4,6 +4,7 @@ import christmas.domain.menu.component.Price;
 
 public interface Discount {
     Price discount();
+
     Price getDiscountValue();
 
 }

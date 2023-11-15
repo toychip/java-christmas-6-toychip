@@ -16,7 +16,7 @@ class GiftMenuEventTest {
     @ParameterizedTest
     @CsvSource("119999")
     @DisplayName("구입 금액이 기준 미만일 때 InvalidGiftMenuException이 발생한다.")
-    void 증정_이벤트_구입_금액이_기준미만_테스트(int userInputPrice){
+    void 증정_이벤트_구입_금액이_기준미만_테스트(int userInputPrice) {
         //given
         Price price = new Price(userInputPrice);
 
@@ -30,7 +30,7 @@ class GiftMenuEventTest {
     @ParameterizedTest
     @CsvSource("130000")
     @DisplayName("증정 이벤트를 진행하여 혜택 금액이 요구사항에 맞는 값인지 테스트")
-    void 증정_이벤트_혜택금액_테스트(int userInputPrice){
+    void 증정_이벤트_혜택금액_테스트(int userInputPrice) {
         //given
         Price price = new Price(userInputPrice);
 
@@ -47,7 +47,7 @@ class GiftMenuEventTest {
     @ParameterizedTest
     @CsvSource("130000")
     @DisplayName("증정 이벤트를 진행하여 증정 상품이 요구사항에 맞는 값인지 테스트")
-    void 증정_이벤트_증정_상품이름_테스트(int userInputPrice){
+    void 증정_이벤트_증정_상품이름_테스트(int userInputPrice) {
         //given
         Price price = new Price(userInputPrice);
 

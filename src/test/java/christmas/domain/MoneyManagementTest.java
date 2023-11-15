@@ -28,7 +28,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("주문 금액이 맞는지 확인하는 테스트")
-    void totalPriceTest(){
+    void totalPriceTest() {
 
         //when
         Price totalPrePrice = moneyManagement.getTotalPrePrice();
@@ -40,7 +40,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("혜택에 맞는 증정 상품을 증정했지 확인하는 테스트")
-    void giftNameTest(){
+    void giftNameTest() {
 
         //when
         GiftMenuDto giftMenu = moneyManagement.getGiftMenu();
@@ -54,7 +54,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("총 혜택 금액 테스트")
-    void totalDiscountPriceTest(){
+    void totalDiscountPriceTest() {
 
         //when
         Price totalDiscountPrice = moneyManagement.getTotalDiscountPrice();
@@ -66,7 +66,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("할인 후 예상 결제 금액 테스트")
-    void totalPostPriceTest(){
+    void totalPostPriceTest() {
 
         //when
         Price totalPostPrice = moneyManagement.getTotalPostPrice();
@@ -78,7 +78,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("혜택 금액에 따라 배지 증정 테스트")
-    void badgeTest(){
+    void badgeTest() {
 
         //when
         EventBadge badge = moneyManagement.getBadge();
@@ -91,7 +91,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("할인 상세 - 크리스마스 할인 테스트")
-    void discountDetailXmasTest(){
+    void discountDetailXmasTest() {
 
         List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
         int christmasDiscountValue = discountDetails.stream()
@@ -104,7 +104,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("할인 상세 - 평일 할인 테스트")
-    void discountDetailWeekdayTest(){
+    void discountDetailWeekdayTest() {
 
         List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
         int weekdayDiscountValue = discountDetails.stream()
@@ -117,7 +117,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("할인 상세 - 특별 할인 금액 테스트")
-    void discountDetailSpecialTest(){
+    void discountDetailSpecialTest() {
 
         List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
         int specialDiscountValue = discountDetails.stream()
@@ -129,7 +129,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("할인 상세 - 상품 증정 금액 테스트")
-    void discountDetail_GiftMenuEventTest(){
+    void discountDetail_GiftMenuEventTest() {
 
         List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
         int giftMenuEventValue = discountDetails.stream()

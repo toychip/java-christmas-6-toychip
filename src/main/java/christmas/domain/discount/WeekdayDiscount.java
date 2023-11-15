@@ -21,7 +21,7 @@ public class WeekdayDiscount implements Discount {
     public WeekdayDiscount(VisitDate visitDate, Orders orders) {
         validate(visitDate);
         this.orders = orders;
-        this.discountValue = discount();
+        discountValue = discount();
     }
 
     private void validate(VisitDate visitDate) {

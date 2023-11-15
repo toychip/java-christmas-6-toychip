@@ -16,9 +16,8 @@ public class GiftMenuEvent implements Discount {
 
     public GiftMenuEvent(Price originalPrice) {
         validate(originalPrice);
-        // TODO 불필요한 this 제거하기
-        this.discountValue = discount();
-        this.giftName = generateGiftName();
+        discountValue = discount();
+        giftName = generateGiftName();
         quantity = generateQuantity();
     }
 

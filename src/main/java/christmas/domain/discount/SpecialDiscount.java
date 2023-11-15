@@ -14,7 +14,7 @@ public class SpecialDiscount implements Discount {
 
     public SpecialDiscount(VisitDate visitDate) {
         validate(visitDate);
-        this.discountValue = discount();
+        discountValue = discount();
     }
 
     private void validate(VisitDate visitDate) {

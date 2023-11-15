@@ -18,7 +18,6 @@ public final class DiscountStatic {
     public static final int SANTA_PRICE = 20000;
     public static final String SANTA_NAME = "산타";
 
-
     // 증정 이벤트 사용 상수
     public static final int QUANTITY = 1;
     public static final int GIFT_EVENT_CRITERIA_VALUE = 120000;

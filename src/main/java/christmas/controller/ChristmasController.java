@@ -105,7 +105,7 @@ public class ChristmasController {
     }
 
     private void judgeGiftMenu(String nameValue, int quantityValue) {
-        if(quantityValue <= 0){
+        if (quantityValue <= 0) {
             outputView.printGiftMenu(nameValue);
         }
         if (quantityValue > 0) {

@@ -17,7 +17,7 @@ class SpecialDiscountTest {
             "4", "5", "6", "7", "8", "9",
             "11", "12", "13", "14", "15", "16",
             "18", "19", "20", "21", "22", "23",
-                  "26", "27", "28", "29", "30"})
+            "26", "27", "28", "29", "30"})
     @DisplayName("특별 날짜 검증, 실패시 InvalidStarException")
     void 특별_날짜_검증(String userDateInput) {
 
@@ -31,7 +31,7 @@ class SpecialDiscountTest {
 
     @ParameterizedTest
     @CsvSource({"3", "10", "17", "24", "25", "31"})
-    void 특별할인_값_테스트(String userInputDate){
+    void 특별할인_값_테스트(String userInputDate) {
 
         //given
         VisitDate visitDate = new VisitDate(userInputDate);

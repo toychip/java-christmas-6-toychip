@@ -36,7 +36,7 @@ public class MoneyManagement {
     private final List<DiscountDetailDto> discountDetails;
     private final Price totalDiscountPrice;
     private final Price totalPostPrice;
-    private final EventBadge Badge;
+    private final EventBadge badge;
 
     public MoneyManagement(VisitDate visitDate, Orders orders) {
         this.orders = orders;
@@ -46,7 +46,7 @@ public class MoneyManagement {
         discountDetails = initDiscountDetails();
         totalDiscountPrice = initTotalDiscountPrice();
         totalPostPrice = initTotalPostPrice();
-        Badge = initBadge();
+        badge = initBadge();
     }
 
     private Price initTotalPrePrice() {
@@ -210,6 +210,6 @@ public class MoneyManagement {
     }
 
     public EventBadge getBadge() {
-        return Badge;
+        return badge;
     }
 }
