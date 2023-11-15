@@ -1,7 +1,17 @@
 package christmas.domain;
 
+import static christmas.domain.DiscountDto.judgeGiftMenuEvent;
+import static christmas.domain.DiscountDto.judgeSpecialDiscount;
+import static christmas.domain.DiscountDto.judgeWeekdayDiscount;
+import static christmas.domain.DiscountDto.judgeWeekendDiscount;
+import static christmas.domain.DiscountDto.judgeXmasDiscount;
+
 import christmas.domain.date.VisitDate;
+import christmas.domain.discount.ChristmasDiscount;
 import christmas.domain.discount.GiftMenuEvent;
+import christmas.domain.discount.SpecialDiscount;
+import christmas.domain.discount.WeekdayDiscount;
+import christmas.domain.discount.WeekendDiscount;
 import christmas.domain.menu.Appetizer;
 import christmas.domain.menu.Desert;
 import christmas.domain.menu.Drink;
@@ -81,6 +91,18 @@ public class MoneyManagement {
 
     private List<Price> getDiscountDetails() {
         return null;
+    }
+
+    private DiscountDto getDiscountDto() {
+        ChristmasDiscount christmasDiscount = judgeXmasDiscount(visitDate);
+        GiftMenuEvent giftMenuEvent = judgeGiftMenuEvent(totalPrePrice);
+        SpecialDiscount specialDiscount = judgeSpecialDiscount(visitDate);
+        WeekdayDiscount weekdayDiscount = judgeWeekdayDiscount(visitDate, orders);
+        WeekendDiscount weekendDiscount = judgeWeekendDiscount(visitDate, orders);
+
+        return new DiscountDto(christmasDiscount, giftMenuEvent,
+                specialDiscount, weekdayDiscount,
+                weekendDiscount);
     }
 
     private Price getTotalDiscountPrice() {
