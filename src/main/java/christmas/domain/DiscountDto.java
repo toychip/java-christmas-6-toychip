@@ -63,4 +63,26 @@ public class DiscountDto {
         }
         return null;
     }
+
+    public ChristmasDiscount getChristmasDiscount() {
+        return christmasDiscount;
+    }
+
+    public GiftMenuEvent getGiftMenuEvent() {
+        return giftMenuEvent;
+    }
+
+    public SpecialDiscount getSpecialDiscount() {
+        return specialDiscount;
+    }
+
+    public WeekdayDiscount getWeekdayDiscount() {
+        return weekdayDiscount;
+    }
+
+    public WeekendDiscount getWeekendDiscount() {
+        return weekendDiscount;
+    }
+
+
 }

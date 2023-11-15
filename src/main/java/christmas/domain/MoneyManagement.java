@@ -48,6 +48,10 @@ public class MoneyManagement {
         Badge = getBadge();
     }
 
+    private static Price notDiscount() {
+        return new Price(0);
+    }
+
     private Price getTotalPrePrice() {
         int totalPrice = orders.getOrders()
                 .stream()
@@ -89,10 +93,6 @@ public class MoneyManagement {
         return new GiftMenuEvent(totalPrePrice);
     }
 
-    private List<Price> getDiscountDetails() {
-        return null;
-    }
-
     private DiscountDto getDiscountDto() {
         ChristmasDiscount christmasDiscount = judgeXmasDiscount(visitDate);
         GiftMenuEvent giftMenuEvent = judgeGiftMenuEvent(totalPrePrice);
@@ -106,6 +106,62 @@ public class MoneyManagement {
     }
 
     private Price getTotalDiscountPrice() {
+        DiscountDto discountDto = getDiscountDto();
+        Price xmasDiscount = getXmasDiscount(discountDto);
+        Price giftMenuEvent = getGiftMenuEvent(discountDto);
+        Price specialDiscount = getSpecialDiscount(discountDto);
+        Price weekdayDiscount = getWeekdayDiscount(discountDto);
+        Price weekendDiscount = getWeekendDiscount(discountDto);
+
+        int totalDiscountPrice = Stream.of(xmasDiscount, giftMenuEvent, specialDiscount, weekdayDiscount, weekendDiscount)
+                .mapToInt(Price::getValue)
+                .sum();
+
+        return new Price(totalDiscountPrice);
+    }
+
+    private Price getXmasDiscount(DiscountDto discountDto) {
+        if (judgeXmasDiscount(visitDate) != null) {
+            ChristmasDiscount christmasDiscount = discountDto.getChristmasDiscount();
+            return christmasDiscount.discount();
+        }
+        return notDiscount();
+    }
+
+    private Price getGiftMenuEvent(DiscountDto discountDto) {
+        Price orderPrice = getTotalPrePrice();
+        if (judgeGiftMenuEvent(orderPrice) != null) {
+            GiftMenuEvent giftMenuEvent = discountDto.getGiftMenuEvent();
+            return giftMenuEvent.discount();
+        }
+        return notDiscount();
+    }
+
+    private Price getSpecialDiscount(DiscountDto discountDto) {
+        if (judgeSpecialDiscount(visitDate) != null) {
+            SpecialDiscount specialDiscount = discountDto.getSpecialDiscount();
+            return specialDiscount.discount();
+        }
+        return notDiscount();
+    }
+
+    private Price getWeekdayDiscount(DiscountDto discountDto) {
+        if (judgeWeekdayDiscount(visitDate, orders) != null) {
+            WeekdayDiscount weekdayDiscount = discountDto.getWeekdayDiscount();
+            return weekdayDiscount.discount();
+        }
+        return notDiscount();
+    }
+
+    private Price getWeekendDiscount(DiscountDto discountDto) {
+        if (judgeWeekendDiscount(visitDate, orders) != null) {
+            WeekendDiscount weekendDiscount = discountDto.getWeekendDiscount();
+            return weekendDiscount.discount();
+        }
+        return notDiscount();
+    }
+
+    private List<Price> getDiscountDetails() {
         return null;
     }
 
