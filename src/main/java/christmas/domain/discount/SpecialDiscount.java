@@ -12,16 +12,16 @@ public class SpecialDiscount implements Discount {
 
     private final Price discountValue;
 
-    public SpecialDiscount(VisitDate visitDate) {
+    public SpecialDiscount(final VisitDate visitDate) {
         validate(visitDate);
         discountValue = discount();
     }
 
-    private void validate(VisitDate visitDate) {
+    private void validate(final VisitDate visitDate) {
         validateIsStar(visitDate);
     }
 
-    private void validateIsStar(VisitDate visitDate) {
+    private void validateIsStar(final VisitDate visitDate) {
         boolean isStar = DecemberCalendar.matchStar(visitDate);
         if (!isStar) {
             throw new InvalidStarException();

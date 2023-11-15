@@ -18,17 +18,17 @@ public class WeekendDiscount implements Discount{
     private final Orders orders;
     private final Price discountValue;
 
-    public WeekendDiscount(VisitDate visitDate, Orders orders) {
+    public WeekendDiscount(final VisitDate visitDate, final Orders orders) {
         validate(visitDate);
         this.orders = orders;
         discountValue = discount();
     }
 
-    private void validate(VisitDate visitDate) {
+    private void validate(final VisitDate visitDate) {
         validateIsWeekend(visitDate);
     }
 
-    private void validateIsWeekend(VisitDate visitDate) {
+    private void validateIsWeekend(final VisitDate visitDate) {
         boolean isWeekend = DecemberCalendar.matchWeekend(visitDate);
         if (!isWeekend) {
             throw new InvalidWeekendException();

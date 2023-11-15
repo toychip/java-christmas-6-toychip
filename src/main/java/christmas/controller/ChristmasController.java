@@ -34,7 +34,7 @@ public class ChristmasController {
         moneyManagement = initMoneyManagement();
     }
 
-    private void previewDate(OutputView outputView) {
+    private void previewDate(final OutputView outputView) {
         int date = visitDate.getDate();
         outputView.preview(date);
     }
@@ -81,7 +81,7 @@ public class ChristmasController {
         outputView.enter();
     }
 
-    private void orderMenuList(Order order) {
+    private void orderMenuList(final Order order) {
         String orderMenu = order.orderMenu().menuName();
         int quantity = order.orderValue().quantity();
         outputView.orderMenuPrint(orderMenu, quantity);
@@ -104,7 +104,7 @@ public class ChristmasController {
         judgeGiftMenu(nameValue, quantityValue);
     }
 
-    private void judgeGiftMenu(String nameValue, int quantityValue) {
+    private void judgeGiftMenu(final String nameValue, final int quantityValue) {
         if (quantityValue <= 0) {
             outputView.printGiftMenu(nameValue);
         }
@@ -127,7 +127,7 @@ public class ChristmasController {
         outputView.enter();
     }
 
-    private void detailDiscountXmas(List<DiscountDetailDto> discountDetails) {
+    private void detailDiscountXmas(final List<DiscountDetailDto> discountDetails) {
         int christmasDiscountValue = discountDetails.stream()
                 .filter(type -> type.discountName().name().equals("ChristmasDiscount"))
                 .mapToInt(type -> type.discountPrice().value())
@@ -137,7 +137,7 @@ public class ChristmasController {
         }
     }
 
-    private void detailDiscountWeekday(List<DiscountDetailDto> discountDetails) {
+    private void detailDiscountWeekday(final List<DiscountDetailDto> discountDetails) {
         int weekdayDiscountValue = discountDetails.stream()
                 .filter(type -> type.discountName().name().equals("WeekdayDiscount"))
                 .mapToInt(type -> type.discountPrice().value())
@@ -148,7 +148,7 @@ public class ChristmasController {
         }
     }
 
-    private void detailDiscountWeekend(List<DiscountDetailDto> discountDetails) {
+    private void detailDiscountWeekend(final List<DiscountDetailDto> discountDetails) {
         int weekendDiscountValue = discountDetails.stream()
                 .filter(type -> type.discountName().name().equals("WeekendDiscount"))
                 .mapToInt(type -> type.discountPrice().value())
@@ -159,7 +159,7 @@ public class ChristmasController {
         }
     }
 
-    private void detailDiscountSpecial(List<DiscountDetailDto> discountDetails) {
+    private void detailDiscountSpecial(final List<DiscountDetailDto> discountDetails) {
         int specialDiscountValue = discountDetails.stream()
                 .filter(type -> type.discountName().name().equals("SpecialDiscount"))
                 .mapToInt(type -> type.discountPrice().value())
@@ -170,7 +170,7 @@ public class ChristmasController {
         }
     }
 
-    private void detailGiftMenu(List<DiscountDetailDto> discountDetails) {
+    private void detailGiftMenu(final List<DiscountDetailDto> discountDetails) {
         int giftMenuEventValue = discountDetails.stream()
                 .filter(type -> type.discountName().name().equals("GiftMenuEvent"))
                 .mapToInt(type -> type.discountPrice().value())

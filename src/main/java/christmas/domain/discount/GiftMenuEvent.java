@@ -14,7 +14,7 @@ public class GiftMenuEvent implements Discount {
     private final Name giftName;
     private final Price quantity;
 
-    public GiftMenuEvent(Price originalPrice) {
+    public GiftMenuEvent(final Price originalPrice) {
         validate(originalPrice);
         discountValue = discount();
         giftName = generateGiftName();
@@ -26,11 +26,11 @@ public class GiftMenuEvent implements Discount {
         return new Price(QUANTITY);
     }
 
-    private void validate(Price originalPrice) {
+    private void validate(final Price originalPrice) {
         validateExceededAmount(originalPrice);
     }
 
-    private void validateExceededAmount(Price originalPrice) {
+    private void validateExceededAmount(final Price originalPrice) {
         int value = originalPrice.value();
         if (value < GIFT_EVENT_CRITERIA_VALUE) {
             throw new InvalidGiftMenuException();

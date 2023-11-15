@@ -18,17 +18,17 @@ public class WeekdayDiscount implements Discount {
     private final Orders orders;
     private final Price discountValue;
 
-    public WeekdayDiscount(VisitDate visitDate, Orders orders) {
+    public WeekdayDiscount(final VisitDate visitDate, final Orders orders) {
         validate(visitDate);
         this.orders = orders;
         discountValue = discount();
     }
 
-    private void validate(VisitDate visitDate) {
+    private void validate(final VisitDate visitDate) {
         validateIsWeekday(visitDate);
     }
 
-    private void validateIsWeekday(VisitDate visitDate) {
+    private void validateIsWeekday(final VisitDate visitDate) {
         boolean isWeekDay = DecemberCalendar.matchWeekday(visitDate);
         if (!isWeekDay) {
             throw new InvalidWeekdayException();

@@ -14,7 +14,7 @@ public class VisitDate {
         this.date = date;
     }
 
-    private int toInt(String date) {
+    private int toInt(final String date) {
         try {
             return Integer.parseInt(date);
         } catch (NumberFormatException e) {

@@ -20,12 +20,12 @@ public enum EventBadge {
     private final Name badgeName;
     private final Price totalDiscountPrice;
 
-    EventBadge(Name badgeName, Price totalDiscountPrice) {
+    EventBadge(final Name badgeName, final Price totalDiscountPrice) {
         this.badgeName = badgeName;
         this.totalDiscountPrice = totalDiscountPrice;
     }
 
-    public static EventBadge findByPrice(Price price) {
+    public static EventBadge findByPrice(final Price price) {
         if (price.value() > getSantaCriteria().value()) {
             return SANTA;
         }

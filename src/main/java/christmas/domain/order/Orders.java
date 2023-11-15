@@ -43,7 +43,7 @@ public class Orders {
         }
     }
 
-    private List<OrderMenu> getOrderMenus(List<Order> unValidatedOrders) {
+    private List<OrderMenu> getOrderMenus(final List<Order> unValidatedOrders) {
         return unValidatedOrders.stream()
                 .map(Order::orderMenu)
                 .toList();
@@ -62,14 +62,14 @@ public class Orders {
                 .allMatch(order -> dinkNames.contains(order.orderMenuName()));
     }
 
-    private void validateMaxValue(List<Order> unValidatedOrders) {
+    private void validateMaxValue(final List<Order> unValidatedOrders) {
         Long quantitySum = getQuantitySum(unValidatedOrders);
         if (quantitySum > ORDER_MAX_UNIT) {
             throw new OrderTotalExceededException();
         }
     }
 
-    private Long getQuantitySum(List<Order> unValidatedOrders) {
+    private Long getQuantitySum(final List<Order> unValidatedOrders) {
         return unValidatedOrders.stream()
                 .mapToLong(Order::orderValueQuantity)
                 .sum();

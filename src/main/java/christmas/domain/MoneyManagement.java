@@ -38,7 +38,7 @@ public class MoneyManagement {
     private final Price totalPostPrice;
     private final EventBadge badge;
 
-    public MoneyManagement(VisitDate visitDate, Orders orders) {
+    public MoneyManagement(final VisitDate visitDate, final Orders orders) {
         this.orders = orders;
         this.visitDate = visitDate;
         totalPrePrice = initTotalPrePrice();
@@ -62,7 +62,7 @@ public class MoneyManagement {
         return new Price(totalPrice);
     }
 
-    private int findPriceByMenuName(String menuName) {
+    private int findPriceByMenuName(final String menuName) {
         List<Menu> allMenu = getAllMenu();
         return allMenu.stream()
                 .filter(menu -> {
@@ -126,14 +126,14 @@ public class MoneyManagement {
                 }).toList();
     }
 
-    private ChristmasDiscount getXmasDiscount(DiscountDto discountDto) {
+    private ChristmasDiscount getXmasDiscount(final DiscountDto discountDto) {
         if (judgeXmasDiscount(visitDate) != null) {
             return discountDto.christmasDiscount();
         }
         return null;
     }
 
-    private GiftMenuEvent getGiftMenuEvent(DiscountDto discountDto) {
+    private GiftMenuEvent getGiftMenuEvent(final DiscountDto discountDto) {
         Price orderPrice = initTotalPrePrice();
         if (judgeGiftMenuEvent(orderPrice) != null) {
             return discountDto.giftMenuEvent();
@@ -141,21 +141,21 @@ public class MoneyManagement {
         return null;
     }
 
-    private SpecialDiscount getSpecialDiscount(DiscountDto discountDto) {
+    private SpecialDiscount getSpecialDiscount(final DiscountDto discountDto) {
         if (judgeSpecialDiscount(visitDate) != null) {
             return discountDto.specialDiscount();
         }
         return null;
     }
 
-    private WeekdayDiscount getWeekdayDiscount(DiscountDto discountDto) {
+    private WeekdayDiscount getWeekdayDiscount(final DiscountDto discountDto) {
         if (judgeWeekdayDiscount(visitDate, orders) != null) {
             return discountDto.weekdayDiscount();
         }
         return null;
     }
 
-    private WeekendDiscount getWeekendDiscount(DiscountDto discountDto) {
+    private WeekendDiscount getWeekendDiscount(final DiscountDto discountDto) {
         if (judgeWeekendDiscount(visitDate, orders) != null) {
             return discountDto.weekendDiscount();
         }

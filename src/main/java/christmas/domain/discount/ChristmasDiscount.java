@@ -15,17 +15,17 @@ public class ChristmasDiscount implements Discount {
     private final VisitDate visitDate;
     private final Price discountValue;
 
-    public ChristmasDiscount(VisitDate visitDate) {
+    public ChristmasDiscount(final VisitDate visitDate) {
         validate(visitDate);
         this.visitDate = visitDate;
         discountValue = discount();
     }
 
-    private void validate(VisitDate visitDate) {
+    private void validate(final VisitDate visitDate) {
         validateXmasPassed(visitDate);
     }
 
-    private void validateXmasPassed(VisitDate visitDate) {
+    private void validateXmasPassed(final VisitDate visitDate) {
         int date = visitDate.getDate();
         if (date > XMAS_DATE) {
             throw new XmasDiscountUnitException();

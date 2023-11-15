@@ -38,14 +38,14 @@ public enum DecemberCalendar {
     private final boolean weekend;
     private final boolean star;
 
-    DecemberCalendar(VisitDate date, boolean weekday, boolean weekend, boolean star) {
+    DecemberCalendar(final VisitDate date, final boolean weekday, final boolean weekend, final boolean star) {
         this.date = date;
         this.weekday = weekday;
         this.weekend = weekend;
         this.star = star;
     }
 
-    public static boolean matchWeekday(VisitDate visitDate) {
+    public static boolean matchWeekday(final VisitDate visitDate) {
         int date = visitDate.getDate();
         for (DecemberCalendar day : DecemberCalendar.values()) {
             if (day.getDate() == date) {
@@ -55,7 +55,7 @@ public enum DecemberCalendar {
         return false;
     }
 
-    public static boolean matchWeekend(VisitDate visitDate) {
+    public static boolean matchWeekend(final VisitDate visitDate) {
         int date = visitDate.getDate();
         for (DecemberCalendar day : DecemberCalendar.values()) {
             if (day.getDate() == date) {
@@ -65,7 +65,7 @@ public enum DecemberCalendar {
         return false;
     }
 
-    public static boolean matchStar(VisitDate visitDate) {
+    public static boolean matchStar(final VisitDate visitDate) {
         int date = visitDate.getDate();
         for (DecemberCalendar day : DecemberCalendar.values()) {
             if (day.getDate() == date) {
