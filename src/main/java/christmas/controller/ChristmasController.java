@@ -165,6 +165,10 @@ public class ChristmasController {
     }
 
     private void totalPostPrice() {
+        outputView.postDiscountTitle();
+        Price totalPostPrice = moneyManagement.getTotalPostPrice();
+        int totalPostValue = totalPostPrice.value();
+        outputView.printAmount(totalPostValue);
     }
 
     private void badge() {
