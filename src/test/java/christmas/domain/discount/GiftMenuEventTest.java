@@ -53,7 +53,7 @@ class GiftMenuEventTest {
 
         // when
         GiftMenuEvent giftMenuEvent = new GiftMenuEvent(price);
-        String giftName = giftMenuEvent.getGiftName();
+        String giftName = giftMenuEvent.getGiftName().getName();
 
         //then
         assertEquals(giftName, "샴페인");

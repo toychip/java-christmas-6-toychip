@@ -8,11 +8,19 @@ import christmas.exception.inside.discount.InvalidGiftMenuException;
 public class GiftMenuEvent implements Discount{
     private final Price discountValue;
     private final Name giftName;
+    private final Price quantity;
 
     public GiftMenuEvent(Price originalPrice) {
         validate(originalPrice);
+        // TODO 불필요한 this 제거하기
         this.discountValue = discount();
         this.giftName = generateGiftName();
+        quantity = generateQuantity();
+    }
+
+    private Price generateQuantity() {
+        // 추후 이벤트가 바뀌어 개수 수정 필요시 이곳에서 수정
+        return new Price(1);
     }
 
     private void validate(Price originalPrice) {
@@ -50,8 +58,12 @@ public class GiftMenuEvent implements Discount{
         return discountValue;
     }
 
-    public String getGiftName() {
-        return giftName.getName();
+    public Name getGiftName() {
+        return giftName;
+    }
+
+    public Price getQuantity() {
+        return quantity;
     }
 
     @Override

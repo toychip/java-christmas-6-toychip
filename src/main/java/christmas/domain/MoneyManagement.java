@@ -31,7 +31,7 @@ public class MoneyManagement {
     private final Orders orders;
     private final VisitDate visitDate;
     private final Price totalPrePrice;
-    private final Name giftName;
+    private final GiftMenuDto giftMenu;
     private final List<DiscountDetailDto> discountDetails;
     private final Price totalDiscountPrice;
     private final Price totalPostPrice;
@@ -41,7 +41,7 @@ public class MoneyManagement {
         this.orders = orders;
         this.visitDate = visitDate;
         totalPrePrice = initTotalPrePrice();
-        giftName = initGiftName();
+        giftMenu = initGiftName();
         discountDetails = initDiscountDetails();
         totalDiscountPrice = initTotalDiscountPrice();
         totalPostPrice = initTotalPostPrice();
@@ -84,15 +84,15 @@ public class MoneyManagement {
                 .toList();
     }
 
-    private Name initGiftName() {
+    private GiftMenuDto initGiftName() {
         DiscountDto discountDto = getDiscountDto();
         GiftMenuEvent giftMenuEvent = getGiftMenuEvent(discountDto);
         if (giftMenuEvent != null) {
-            String giftName = giftMenuEvent.getGiftName();
-            return new Name(giftName);
+            Name giftName = giftMenuEvent.getGiftName();
+            Price quantity = giftMenuEvent.getQuantity();
+            return new GiftMenuDto(giftName, quantity);
         }
-        String nothing = "없음";
-        return new Name(nothing);
+        return GiftMenuDto.defaultValue();
     }
 
     private DiscountDto getDiscountDto() {
@@ -197,8 +197,8 @@ public class MoneyManagement {
         return totalPrePrice;
     }
 
-    public Name getGiftName() {
-        return giftName;
+    public GiftMenuDto getGiftMenu() {
+        return giftMenu;
     }
 
     public List<DiscountDetailDto> getDiscountDetails() {
