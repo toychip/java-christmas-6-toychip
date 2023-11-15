@@ -158,6 +158,10 @@ public class ChristmasController {
 
 
     private void totalBenefitPrice() {
+        outputView.totalDiscountTitle();
+        Price totalDiscountPrice = moneyManagement.getTotalDiscountPrice();
+        int totalDiscountValue = totalDiscountPrice.value();
+        outputView.totalDiscountAmount(totalDiscountValue);
     }
 
     private void totalPostPrice() {
