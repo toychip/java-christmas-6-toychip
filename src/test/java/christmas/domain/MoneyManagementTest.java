@@ -64,7 +64,7 @@ class MoneyManagementTest {
 
     @Test
     @DisplayName("할인 후 예상 결제 금액 테스트")
-    void getTotalPostPriceTest(){
+    void totalPostPriceTest(){
 
         //when
         Price totalPostPrice = moneyManagement.getTotalPostPrice();
@@ -74,16 +74,28 @@ class MoneyManagementTest {
         assertEquals(value, 135754);
     }
 
-    /*
     @Test
-    @DisplayName("혜택에 맞는 증정 상품을 증정했지 확인하는 테스트")
-    void discountDetailTest(){
+    @DisplayName("혜택 금액에 따라 배지 증정 테스트")
+    void badgeTest(){
 
-        List<Price> discountDetails = moneyManagement.getDiscountDetails();
-        discountDetails.stream().mapToInt(Price::getValue)
-                .forEach(System.out::println);
+        //when
+        Name badge = moneyManagement.getBadge();
+        String name = badge.getName();
+
+        //then
+        assertEquals(name, "산타");
     }
 
-     */
+    @Test
+    @DisplayName("할인 상세 - 크리스마스 할인 테스트")
+    void discountDetailXmasTest(){
+
+        List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
+        int christmasDiscountValue = discountDetails.stream()
+                .filter(type -> type.discountName().getName().equals("ChristmasDiscount"))
+                .mapToInt(type -> type.discountPrice().getValue())
+                .sum();
+        assertEquals(christmasDiscountValue, 1200);
+    }
 
 }
