@@ -23,6 +23,7 @@ import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
 import christmas.exception.inside.discount.NotExistsMenuInsideException;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class MoneyManagement {
@@ -31,7 +32,7 @@ public class MoneyManagement {
     private final VisitDate visitDate;
     private final Price totalPrePrice;
     private final Name giftName;
-    private final List<Price> discountDetails;
+    private final List<DiscountDetailDto> discountDetails;
     private final Price totalDiscountPrice;
     private final Price totalPostPrice;
     private final Name Badge;
@@ -106,24 +107,29 @@ public class MoneyManagement {
                 weekendDiscount);
     }
 
-    private List<Price> initDiscountDetails() {
+    private List<DiscountDetailDto> initDiscountDetails() {
         DiscountDto discountDto = getDiscountDto();
-        Price xmasDiscount = getXmasDiscount(discountDto);
-        Price giftPrice = getGiftPrice(discountDto);
-        Price specialDiscount = getSpecialDiscount(discountDto);
-        Price weekdayDiscount = getWeekdayDiscount(discountDto);
-        Price weekendDiscount = getWeekendDiscount(discountDto);
+        ChristmasDiscount xmasDiscount = getXmasDiscount(discountDto);
+        GiftMenuEvent giftMenuEvent = getGiftMenuEvent(discountDto);
+        SpecialDiscount specialDiscount = getSpecialDiscount(discountDto);
+        WeekdayDiscount weekdayDiscount = getWeekdayDiscount(discountDto);
+        WeekendDiscount weekendDiscount = getWeekendDiscount(discountDto);
 
-        return Stream.of(xmasDiscount, giftPrice, specialDiscount, weekdayDiscount, weekendDiscount)
-                .toList();
+        return Stream.of(xmasDiscount, giftMenuEvent, specialDiscount, weekdayDiscount, weekendDiscount)
+                .filter(Objects::nonNull)
+                .map(type -> {
+                    String discountName = type.toString();
+                    Name name = new Name(discountName);
+                    Price discountValue = type.getDiscountValue();
+                    return new DiscountDetailDto(name, discountValue);
+                }).toList();
     }
 
-    private Price getXmasDiscount(DiscountDto discountDto) {
+    private ChristmasDiscount getXmasDiscount(DiscountDto discountDto) {
         if (judgeXmasDiscount(visitDate) != null) {
-            ChristmasDiscount christmasDiscount = discountDto.getChristmasDiscount();
-            return christmasDiscount.discount();
+            return discountDto.christmasDiscount();
         }
-        return notDiscount();
+        return null;
     }
 
     private Price notDiscount() {
@@ -133,47 +139,38 @@ public class MoneyManagement {
     private GiftMenuEvent getGiftMenuEvent(DiscountDto discountDto) {
         Price orderPrice = initTotalPrePrice();
         if (judgeGiftMenuEvent(orderPrice) != null) {
-            return discountDto.getGiftMenuEvent();
+            return discountDto.giftMenuEvent();
         }
         return null;
     }
 
-    private Price getGiftPrice(DiscountDto discountDto) {
-        GiftMenuEvent giftMenu = getGiftMenuEvent(discountDto);
-        if (giftMenu != null) {
-            return giftMenu.getDiscountValue();
-        }
-        return notDiscount();
-    }
-
-    private Price getSpecialDiscount(DiscountDto discountDto) {
+    private SpecialDiscount getSpecialDiscount(DiscountDto discountDto) {
         if (judgeSpecialDiscount(visitDate) != null) {
-            SpecialDiscount specialDiscount = discountDto.getSpecialDiscount();
-            return specialDiscount.discount();
+            return discountDto.specialDiscount();
         }
-        return notDiscount();
+        return null;
     }
 
-    private Price getWeekdayDiscount(DiscountDto discountDto) {
+    private WeekdayDiscount getWeekdayDiscount(DiscountDto discountDto) {
         if (judgeWeekdayDiscount(visitDate, orders) != null) {
-            WeekdayDiscount weekdayDiscount = discountDto.getWeekdayDiscount();
-            return weekdayDiscount.discount();
+            return discountDto.weekdayDiscount();
         }
-        return notDiscount();
+        return null;
     }
 
-    private Price getWeekendDiscount(DiscountDto discountDto) {
+    private WeekendDiscount getWeekendDiscount(DiscountDto discountDto) {
         if (judgeWeekendDiscount(visitDate, orders) != null) {
-            WeekendDiscount weekendDiscount = discountDto.getWeekendDiscount();
-            return weekendDiscount.discount();
+            return discountDto.weekendDiscount();
         }
-        return notDiscount();
+        return null;
     }
 
     private Price initTotalDiscountPrice() {
-        List<Price> discountDetails = initDiscountDetails();
-        int totalDiscountPrice = discountDetails.stream()
-                .mapToInt(Price::getValue)
+
+        List<DiscountDetailDto> discountDetailDtos = initDiscountDetails();
+        int totalDiscountPrice = discountDetailDtos.stream()
+                .filter(Objects::nonNull)
+                .mapToInt(type -> type.discountPrice().getValue())
                 .sum();
 
         return new Price(totalDiscountPrice);
@@ -204,7 +201,7 @@ public class MoneyManagement {
         return giftName;
     }
 
-    public List<Price> getDiscountDetails() {
+    public List<DiscountDetailDto> getDiscountDetails() {
         return discountDetails;
     }
 
