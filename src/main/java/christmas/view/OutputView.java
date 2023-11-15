@@ -57,22 +57,26 @@ public class OutputView {
     }
 
     public void benefitWeekday(int amount) {
-        String message = "평일 할인: -" + amount + KOREA_BILL_UNIT;
+        String formatAmount = formatAmount(amount);
+        String message = "평일 할인: -" + formatAmount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
     public void benefitWeekend(int amount) {
-        String message = "주말 할인: -" + amount + KOREA_BILL_UNIT;
+        String formatAmount = formatAmount(amount);
+        String message = "주말 할인: -" + formatAmount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
     public void benefitSpecial(int amount) {
-        String message = "특별 할인: -" + amount + KOREA_BILL_UNIT;
+        String formatAmount = formatAmount(amount);
+        String message = "특별 할인: -" + formatAmount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
     public void benefitGiftEvent(int amount) {
-        String message = "증정 이벤트: -" + amount + KOREA_BILL_UNIT;
+        String formatAmount = formatAmount(amount);
+        String message = "증정 이벤트: -" + formatAmount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
@@ -82,7 +86,8 @@ public class OutputView {
     }
 
     public void totalDiscountAmount(int amount) {
-        String message = amount + KOREA_BILL_UNIT;
+        String formatAmount = formatAmount(amount);
+        String message = formatAmount + KOREA_BILL_UNIT;
         if (amount > 0) {
             String head = "-";
             message = head + message;
@@ -106,11 +111,16 @@ public class OutputView {
     }
 
     public void printAmount(int amount) {
-        System.out.println(amount + KOREA_BILL_UNIT);
+        String formatAmount = formatAmount(amount);
+        System.out.println(formatAmount + KOREA_BILL_UNIT);
         enter();
     }
 
     public void enter() {
         System.out.println();
+    }
+
+    public String formatAmount(int amount) {
+        return String.format("%,d", amount);
     }
 }
