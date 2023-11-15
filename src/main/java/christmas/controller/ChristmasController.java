@@ -53,6 +53,7 @@ public class ChristmasController {
         totalBenefitPrice();
         totalPostPrice();
         badge();
+        inputView.closeConsole();
     }
 
     private void totalPrePrice() {
@@ -91,6 +92,7 @@ public class ChristmasController {
         detailDiscountSpecial(discountDetails);
         detailGiftMenu(discountDetails);
         detailNothing();
+        outputView.enter();
     }
 
     private void detailDiscountXmas(List<DiscountDetailDto> discountDetails) {

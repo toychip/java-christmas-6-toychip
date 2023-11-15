@@ -1,5 +1,7 @@
 package christmas.view;
 
+import static christmas.static_class.CommonStatic.KOREA_BILL_UNIT;
+
 public class OutputView {
     public void introduce() {
         String message = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
@@ -28,8 +30,9 @@ public class OutputView {
     }
 
     public void printGiftMenu(String name, int quantity) {
-        String message = name + quantity + "개";
+        String message = name + " " + quantity + "개";
         printMessage(message);
+        enter();
     }
 
     public void printGiftMenu(String name) {
@@ -42,27 +45,27 @@ public class OutputView {
     }
 
     public void benefitDetailXmas(int amount) {
-        String message = "크리스마스 디데이 할인: -" + amount + "원";
+        String message = "크리스마스 디데이 할인: -" + amount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
     public void benefitWeekday(int amount) {
-        String message = "평일 할인: -" + amount + "원";
+        String message = "평일 할인: -" + amount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
     public void benefitWeekend(int amount) {
-        String message = "주말 할인: -" + amount + "원";
+        String message = "주말 할인: -" + amount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
     public void benefitSpecial(int amount) {
-        String message = "특별 할인: -" + amount + "원";
+        String message = "특별 할인: -" + amount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
     public void benefitGiftEvent(int amount) {
-        String message = "증정 이벤트: -" + amount + "원";
+        String message = "증정 이벤트: -" + amount + KOREA_BILL_UNIT;
         printMessage(message);
     }
 
@@ -72,12 +75,13 @@ public class OutputView {
     }
 
     public void totalDiscountAmount(int amount) {
-        String message = amount + "원";
+        String message = amount + KOREA_BILL_UNIT;
         if (amount > 0) {
             String head = "-";
             message = head + message;
         }
         printMessage(message);
+        enter();
     }
 
     public void postDiscountTitle() {
@@ -95,6 +99,11 @@ public class OutputView {
     }
 
     public void printAmount(int amount) {
-        System.out.println(amount + "원");
+        System.out.println(amount + KOREA_BILL_UNIT);
+        enter();
+    }
+
+    public void enter() {
+        System.out.println();
     }
 }
