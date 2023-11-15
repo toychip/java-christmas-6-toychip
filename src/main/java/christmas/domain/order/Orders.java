@@ -8,6 +8,7 @@ import static christmas.static_class.CommonStatic.QUANTITY_LOCATION;
 
 import christmas.domain.menu.Drink;
 import christmas.exception.outside.order.OrderDuplicateMenuException;
+import christmas.exception.outside.order.OrderFormatException;
 import christmas.exception.outside.order.OrderOnlyDrinkException;
 import christmas.exception.outside.order.OrderTotalExceededException;
 import java.util.Arrays;
@@ -103,11 +104,19 @@ public class Orders {
     }
 
     private String getMenuNameFromParts(final List<String> parts) {
-        return parts.get(MENU_LOCATION);
+        try {
+            return parts.get(MENU_LOCATION);
+        } catch (NumberFormatException e) {
+            throw new OrderFormatException();
+        }
     }
 
     private int getQuantityFromParts(final List<String> parts) {
-        return Integer.parseInt(parts.get(QUANTITY_LOCATION));
+        try {
+            return Integer.parseInt(parts.get(QUANTITY_LOCATION));
+        } catch (NumberFormatException e) {
+            throw new OrderFormatException();
+        }
     }
 
     public List<Order> getOrders() {
