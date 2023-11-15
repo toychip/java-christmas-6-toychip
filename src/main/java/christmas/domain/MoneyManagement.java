@@ -28,14 +28,12 @@ public class MoneyManagement {
 
     private final Orders orders;
     private final VisitDate visitDate;
-
     private final Price totalPrePrice;
-    private final Price totalDiscountPrice;
-    private final List<Price> discountDetails;
     private final Name giftName;
+    private final List<Price> discountDetails;
+    private final Price totalDiscountPrice;
     private final Price totalPostPrice;
     private final Name Badge;
-
 
     public MoneyManagement(VisitDate visitDate, Orders orders) {
         this.orders = orders;
@@ -46,10 +44,6 @@ public class MoneyManagement {
         totalDiscountPrice = getTotalDiscountPrice();
         totalPostPrice = getTotalPostPrice();
         Badge = getBadge();
-    }
-
-    private Price notDiscount() {
-        return new Price(0);
     }
 
     private Price getTotalPrePrice() {
@@ -111,7 +105,7 @@ public class MoneyManagement {
                 weekendDiscount);
     }
 
-    private Price getTotalDiscountPrice() {
+    private List<Price> getDiscountDetails() {
         DiscountDto discountDto = getDiscountDto();
         Price xmasDiscount = getXmasDiscount(discountDto);
         Price giftPrice = getGiftPrice(discountDto);
@@ -119,11 +113,8 @@ public class MoneyManagement {
         Price weekdayDiscount = getWeekdayDiscount(discountDto);
         Price weekendDiscount = getWeekendDiscount(discountDto);
 
-        int totalDiscountPrice = Stream.of(xmasDiscount, giftPrice, specialDiscount, weekdayDiscount, weekendDiscount)
-                .mapToInt(Price::getValue)
-                .sum();
-
-        return new Price(totalDiscountPrice);
+        return Stream.of(xmasDiscount, giftPrice, specialDiscount, weekdayDiscount, weekendDiscount)
+                .toList();
     }
 
     private Price getXmasDiscount(DiscountDto discountDto) {
@@ -132,6 +123,10 @@ public class MoneyManagement {
             return christmasDiscount.discount();
         }
         return notDiscount();
+    }
+
+    private Price notDiscount() {
+        return new Price(0);
     }
 
     private GiftMenuEvent getGiftMenuEvent(DiscountDto discountDto) {
@@ -174,9 +169,13 @@ public class MoneyManagement {
         return notDiscount();
     }
 
-    private List<Price> getDiscountDetails() {
-        // TODO
-        return null;
+    private Price getTotalDiscountPrice() {
+        List<Price> discountDetails = getDiscountDetails();
+        int totalDiscountPrice = discountDetails.stream()
+                .mapToInt(Price::getValue)
+                .sum();
+
+        return new Price(totalDiscountPrice);
     }
 
     private Price getTotalPostPrice() {
