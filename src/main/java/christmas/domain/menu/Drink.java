@@ -1,5 +1,12 @@
 package christmas.domain.menu;
 
+import static christmas.static_class.MenuStatic.CHAMPAGNE_NAME;
+import static christmas.static_class.MenuStatic.CHAMPAGNE_PRICE;
+import static christmas.static_class.MenuStatic.RED_WINE_NAME;
+import static christmas.static_class.MenuStatic.RED_WINE_PRICE;
+import static christmas.static_class.MenuStatic.ZERO_COLA_NAME;
+import static christmas.static_class.MenuStatic.ZERO_COLA_PRICE;
+
 import christmas.domain.menu.component.Menu;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
@@ -8,9 +15,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public enum Drink implements Menu {
-    ZERO_COLA(new Name("제로콜라"), new Price(3000), false),
-    RED_WINE(new Name("레드와인"), new Price(60000), false),
-    CHAMPAGNE(new Name("샴페인"), new Price(25000), true);
+    ZERO_COLA(new Name(ZERO_COLA_NAME), new Price(ZERO_COLA_PRICE), false),
+    RED_WINE(new Name(RED_WINE_NAME), new Price(RED_WINE_PRICE), false),
+    CHAMPAGNE(new Name(CHAMPAGNE_NAME), new Price(CHAMPAGNE_PRICE), true);
 
     private final Name name;
     private final Price price;

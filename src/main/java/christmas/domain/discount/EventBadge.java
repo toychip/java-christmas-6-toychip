@@ -1,14 +1,22 @@
 package christmas.domain.discount;
 
+import static christmas.static_class.CommonStatic.NONE_NAME;
+import static christmas.static_class.DiscountStatic.SANTA_NAME;
+import static christmas.static_class.DiscountStatic.SANTA_PRICE;
+import static christmas.static_class.DiscountStatic.STAR_NAME;
+import static christmas.static_class.DiscountStatic.STAR_PRICE;
+import static christmas.static_class.DiscountStatic.TREE_NAME;
+import static christmas.static_class.DiscountStatic.TREE_PRICE;
+
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 
 public enum EventBadge {
 
-    NONE(new Name("없음"), new Price(0)),
-    STAR(new Name("별"), new Price(5000)),
-    TREE(new Name("트리"), new Price(10000)),
-    SANTA(new Name("산타"), new Price(20000))
+    NONE(new Name(NONE_NAME), new Price(0)),
+    STAR(new Name(STAR_NAME), new Price(STAR_PRICE)),
+    TREE(new Name(TREE_NAME), new Price(TREE_PRICE)),
+    SANTA(new Name(SANTA_NAME), new Price(SANTA_PRICE))
     ;
     private final Name badgeName;
     private final Price totalDiscountPrice;

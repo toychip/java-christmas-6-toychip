@@ -1,5 +1,10 @@
 package christmas.domain.discount;
 
+import static christmas.static_class.DiscountStatic.XMAS_DISCOUNT_NAME;
+import static christmas.static_class.DiscountStatic.XMAS_MULTIPLE_UNIT;
+import static christmas.static_class.DiscountStatic.XMAS_MinusUnit;
+import static christmas.static_class.DiscountStatic.XMAS_PLUS_UNIT;
+
 import christmas.domain.date.VisitDate;
 import christmas.domain.menu.component.Price;
 import christmas.exception.inside.discount.XmasDiscountUnitException;
@@ -34,7 +39,7 @@ public class ChristmasDiscount implements Discount{
 
     private int calculateDiscount() {
         int date = getDate();
-        return date * 100 + 1000 - 100;
+        return date * XMAS_MULTIPLE_UNIT + XMAS_PLUS_UNIT - XMAS_MinusUnit;
     }
 
     private int getDate() {
@@ -48,6 +53,6 @@ public class ChristmasDiscount implements Discount{
 
     @Override
     public String toString() {
-        return "ChristmasDiscount";
+        return XMAS_DISCOUNT_NAME;
     }
 }

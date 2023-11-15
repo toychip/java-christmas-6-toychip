@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import static christmas.static_class.CommonStatic.NONE_NAME;
+
 import christmas.domain.discount.GiftMenuEvent;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
@@ -9,7 +11,7 @@ public class GiftMenuDto {
     private final Price quantity;
 
     public static GiftMenuDto defaultValue() {
-        Name defaultMenuName = new Name("없음");
+        Name defaultMenuName = new Name(NONE_NAME);
         Price defaultQuantity = new Price(0);
         return new GiftMenuDto(defaultMenuName, defaultQuantity);
     }

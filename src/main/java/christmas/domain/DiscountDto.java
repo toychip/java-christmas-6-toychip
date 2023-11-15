@@ -1,5 +1,8 @@
 package christmas.domain;
 
+import static christmas.static_class.DiscountStatic.GIFT_EVENT_CRITERIA_VALUE;
+import static christmas.static_class.DiscountStatic.XMAS_DATE;
+
 import christmas.domain.date.DecemberCalendar;
 import christmas.domain.date.VisitDate;
 import christmas.domain.discount.ChristmasDiscount;
@@ -16,14 +19,14 @@ public record DiscountDto(ChristmasDiscount christmasDiscount, GiftMenuEvent gif
 
     static ChristmasDiscount judgeXmasDiscount(VisitDate visitDate) {
         int date = visitDate.getDate();
-        if (date <= 25) {
+        if (date <= XMAS_DATE) {
             return new ChristmasDiscount(visitDate);
         }
         return null;
     }
 
     static GiftMenuEvent judgeGiftMenuEvent(Price price) {
-        if (price.getValue() >= 120000) {
+        if (price.getValue() >= GIFT_EVENT_CRITERIA_VALUE) {
             return new GiftMenuEvent(price);
         }
         return null;

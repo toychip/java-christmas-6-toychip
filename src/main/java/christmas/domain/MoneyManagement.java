@@ -5,6 +5,7 @@ import static christmas.domain.DiscountDto.judgeSpecialDiscount;
 import static christmas.domain.DiscountDto.judgeWeekdayDiscount;
 import static christmas.domain.DiscountDto.judgeWeekendDiscount;
 import static christmas.domain.DiscountDto.judgeXmasDiscount;
+import static christmas.static_class.DiscountStatic.GIFT_MENU_AMOUNT;
 
 import christmas.domain.date.VisitDate;
 import christmas.domain.discount.ChristmasDiscount;
@@ -182,7 +183,7 @@ public class MoneyManagement {
         DiscountDto discountDto = getDiscountDto();
         GiftMenuEvent giftMenuEvent = getGiftMenuEvent(discountDto);
         if (giftMenuEvent != null) {
-            postValue = postValue + 25000;
+            postValue = postValue + GIFT_MENU_AMOUNT;
         }
 
         return new Price(postValue);

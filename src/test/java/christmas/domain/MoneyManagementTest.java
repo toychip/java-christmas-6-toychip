@@ -3,6 +3,7 @@ package christmas.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import christmas.domain.date.VisitDate;
+import christmas.domain.discount.EventBadge;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
@@ -42,7 +43,8 @@ class MoneyManagementTest {
     void giftNameTest(){
 
         //when
-        Name giftName = moneyManagement.getGiftName();
+        GiftMenuDto giftMenu = moneyManagement.getGiftMenu();
+        Name giftName = giftMenu.getMenuName();
         String name = giftName.getName();
         String 샴페인 = "샴페인";
 
@@ -79,8 +81,9 @@ class MoneyManagementTest {
     void badgeTest(){
 
         //when
-        Name badge = moneyManagement.getBadge();
-        String name = badge.getName();
+        EventBadge badge = moneyManagement.getBadge();
+        Name badgeName = badge.getBadgeName();
+        String name = badgeName.getName();
 
         //then
         assertEquals(name, "산타");
@@ -104,11 +107,11 @@ class MoneyManagementTest {
     void discountDetailWeekdayTest(){
 
         List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
-        int christmasDiscountValue = discountDetails.stream()
+        int weekdayDiscountValue = discountDetails.stream()
                 .filter(type -> type.discountName().getName().equals("WeekdayDiscount"))
                 .mapToInt(type -> type.discountPrice().getValue())
                 .sum();
-        assertEquals(christmasDiscountValue, 4046);
+        assertEquals(weekdayDiscountValue, 4046);
     }
 
 
@@ -117,11 +120,11 @@ class MoneyManagementTest {
     void discountDetailSpecialTest(){
 
         List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
-        int christmasDiscountValue = discountDetails.stream()
+        int specialDiscountValue = discountDetails.stream()
                 .filter(type -> type.discountName().getName().equals("SpecialDiscount"))
                 .mapToInt(type -> type.discountPrice().getValue())
                 .sum();
-        assertEquals(christmasDiscountValue, 1000);
+        assertEquals(specialDiscountValue, 1000);
     }
 
     @Test
@@ -129,11 +132,11 @@ class MoneyManagementTest {
     void discountDetail_GiftMenuEventTest(){
 
         List<DiscountDetailDto> discountDetails = moneyManagement.getDiscountDetails();
-        int christmasDiscountValue = discountDetails.stream()
+        int giftMenuEventValue = discountDetails.stream()
                 .filter(type -> type.discountName().getName().equals("GiftMenuEvent"))
                 .mapToInt(type -> type.discountPrice().getValue())
                 .sum();
-        assertEquals(christmasDiscountValue, 25000);
+        assertEquals(giftMenuEventValue, 25000);
     }
 
 }

@@ -1,5 +1,9 @@
 package christmas.domain.discount;
 
+import static christmas.static_class.DiscountStatic.GIFT_EVENT_CRITERIA_VALUE;
+import static christmas.static_class.DiscountStatic.GIFT_MENU_EVENT_NAME;
+import static christmas.static_class.DiscountStatic.QUANTITY;
+
 import christmas.domain.menu.Drink;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
@@ -20,7 +24,7 @@ public class GiftMenuEvent implements Discount{
 
     private Price generateQuantity() {
         // 추후 이벤트가 바뀌어 개수 수정 필요시 이곳에서 수정
-        return new Price(1);
+        return new Price(QUANTITY);
     }
 
     private void validate(Price originalPrice) {
@@ -29,7 +33,7 @@ public class GiftMenuEvent implements Discount{
 
     private void validateExceededAmount(Price originalPrice) {
         int value = originalPrice.getValue();
-        if (value < 120000) {
+        if (value < GIFT_EVENT_CRITERIA_VALUE) {
             throw new InvalidGiftMenuException();
         }
     }
@@ -68,6 +72,6 @@ public class GiftMenuEvent implements Discount{
 
     @Override
     public String toString() {
-        return "GiftMenuEvent";
+        return GIFT_MENU_EVENT_NAME;
     }
 }

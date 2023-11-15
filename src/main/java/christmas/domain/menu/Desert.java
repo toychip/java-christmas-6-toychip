@@ -1,5 +1,10 @@
 package christmas.domain.menu;
 
+import static christmas.static_class.MenuStatic.CHOCO_CAKE_NAME;
+import static christmas.static_class.MenuStatic.CHOCO_CAKE_PRICE;
+import static christmas.static_class.MenuStatic.ICE_CREAM_NAME;
+import static christmas.static_class.MenuStatic.ICE_CREAM_PRICE;
+
 import christmas.domain.menu.component.Menu;
 import christmas.domain.menu.component.Name;
 import christmas.domain.menu.component.Price;
@@ -8,8 +13,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public enum Desert implements Menu {
-    CHOCO_CAKE(new Name("초코케이크"), new Price(15000)),
-    ICE_CREAM(new Name("아이스크림"), new Price(5000));
+    CHOCO_CAKE(new Name(CHOCO_CAKE_NAME), new Price(CHOCO_CAKE_PRICE)),
+    ICE_CREAM(new Name(ICE_CREAM_NAME), new Price(ICE_CREAM_PRICE));
 
     private final Name name;
     private final Price price;

@@ -1,11 +1,12 @@
 package christmas.domain.date;
 
+import static christmas.static_class.DateStatic.DATE_MAX;
+import static christmas.static_class.DateStatic.DATE_MIN;
+
 import christmas.exception.outside.DateUnitException;
 
 public class VisitDate {
     private final int date;
-    private static final int DATE_MIN = 1;
-    private static final int DATE_MAX = 31;
 
     public VisitDate(final String inputDate) {
         int date = toInt(inputDate);

@@ -1,5 +1,11 @@
 package christmas.domain.order;
 
+import static christmas.static_class.CommonStatic.MENU_LOCATION;
+import static christmas.static_class.CommonStatic.MENU_QUANTITY_SPLITTER;
+import static christmas.static_class.CommonStatic.ORDER_MAX_UNIT;
+import static christmas.static_class.CommonStatic.ORDER_SPLITTER;
+import static christmas.static_class.CommonStatic.QUANTITY_LOCATION;
+
 import christmas.domain.menu.Drink;
 import christmas.exception.outside.order.OrderDuplicateMenuException;
 import christmas.exception.outside.order.OrderOnlyDrinkException;
@@ -57,7 +63,7 @@ public class Orders {
 
     private void validateMaxValue(List<Order> unValidatedOrders) {
         Long quantitySum = getQuantitySum(unValidatedOrders);
-        if (quantitySum > 20) {
+        if (quantitySum > ORDER_MAX_UNIT) {
             throw new OrderTotalExceededException();
         }
     }
@@ -77,7 +83,7 @@ public class Orders {
 
     // 티본스테이크-1,바비큐립-1,초코케이크-2 -> [티본스테이크-1] [바비큐립-1] [초코케이크-2]
     private List<String> divideOrders(final String userInput) {
-        return Arrays.stream(userInput.split(","))
+        return Arrays.stream(userInput.split(ORDER_SPLITTER))
                 .map(String::trim)
                 .toList();
     }
@@ -91,17 +97,17 @@ public class Orders {
 
     // [티본스테이크-1] -> [티본스테이크], [1]
     private List<String> divideOrder(final String userOrder) {
-        return Arrays.stream(userOrder.split("-"))
+        return Arrays.stream(userOrder.split(MENU_QUANTITY_SPLITTER))
                 .map(String::trim)
                 .toList();
     }
 
     private String getMenuNameFromParts(final List<String> parts) {
-        return parts.get(0); // 첫 번째 요소가 메뉴 이름
+        return parts.get(MENU_LOCATION);
     }
 
     private int getQuantityFromParts(final List<String> parts) {
-        return Integer.parseInt(parts.get(1)); // 두 번째 요소가 수량
+        return Integer.parseInt(parts.get(QUANTITY_LOCATION));
     }
 
     public List<Order> getOrders() {

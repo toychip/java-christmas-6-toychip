@@ -1,5 +1,8 @@
 package christmas.domain.discount;
 
+import static christmas.static_class.DiscountStatic.SPECIAL_DISCOUNT_NAME;
+import static christmas.static_class.DiscountStatic.SPECIAL_DISCOUNT_VALUE;
+
 import christmas.domain.date.VisitDate;
 import christmas.domain.date.DecemberCalendar;
 import christmas.domain.menu.component.Price;
@@ -32,7 +35,7 @@ public class SpecialDiscount implements Discount{
     }
 
     private int calculateDiscount() {
-        return 1000;
+        return SPECIAL_DISCOUNT_VALUE;
     }
 
     @Override
@@ -42,6 +45,6 @@ public class SpecialDiscount implements Discount{
 
     @Override
     public String toString() {
-        return "SpecialDiscount";
+        return SPECIAL_DISCOUNT_NAME;
     }
 }

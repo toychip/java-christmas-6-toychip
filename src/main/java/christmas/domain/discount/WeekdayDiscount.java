@@ -1,5 +1,8 @@
 package christmas.domain.discount;
 
+import static christmas.static_class.DiscountStatic.WEEKDAY_DISCOUNT_NAME;
+import static christmas.static_class.DiscountStatic.WEEK_DISCOUNT_UNIT;
+
 import christmas.domain.date.VisitDate;
 import christmas.domain.date.DecemberCalendar;
 import christmas.domain.menu.Desert;
@@ -40,7 +43,7 @@ public class WeekdayDiscount implements Discount{
 
     private int calculateDiscount() {
         int totalDesertQuantity = getTotalDesertQuantity();
-        return totalDesertQuantity * 2023;
+        return totalDesertQuantity * WEEK_DISCOUNT_UNIT;
     }
 
     private int getTotalDesertQuantity() {
@@ -64,6 +67,6 @@ public class WeekdayDiscount implements Discount{
 
     @Override
     public String toString() {
-        return "WeekdayDiscount";
+        return WEEKDAY_DISCOUNT_NAME;
     }
 }
