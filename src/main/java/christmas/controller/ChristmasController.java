@@ -1,10 +1,16 @@
 package christmas.controller;
 
+import christmas.domain.DiscountDetailDto;
+import christmas.domain.GiftMenuDto;
 import christmas.domain.MoneyManagement;
 import christmas.domain.date.VisitDate;
+import christmas.domain.discount.EventBadge;
+import christmas.domain.menu.component.Name;
+import christmas.domain.menu.component.Price;
 import christmas.domain.order.Orders;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import java.util.List;
 
 public class ChristmasController {
     private final InputView inputView;
@@ -34,7 +40,37 @@ public class ChristmasController {
     }
 
     private MoneyManagement initMoneyManagement() {
-        return null;
+        return new MoneyManagement(visitDate, orders);
     }
+
+    public void run() {
+        outputView.introduce();
+        totalPrePrice();
+        giftMenu();
+        benefitDetail();
+        totalBenefitPrice();
+        totalPostPrice();
+        badge();
+    }
+
+    private void totalPrePrice() {
+    }
+
+    private void giftMenu() {
+    }
+
+    private void benefitDetail() {
+    }
+
+    private void totalBenefitPrice() {
+    }
+
+    private void totalPostPrice() {
+    }
+
+    private void badge() {
+
+    }
+
 
 }
