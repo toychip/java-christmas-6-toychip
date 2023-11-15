@@ -18,6 +18,34 @@ public enum EventBadge {
         this.totalDiscountPrice = totalDiscountPrice;
     }
 
+    public static EventBadge findByPrice(Price price) {
+        if (price.getValue() > getSantaCriteria().getValue()) {
+            return SANTA;
+        }
+
+        if (price.getValue() > getTreeCriteria().getValue()) {
+            return TREE;
+        }
+
+        if (price.getValue() > getStarCriteria().getValue()) {
+            return STAR;
+        }
+
+        return NONE;
+    }
+
+    private static Price getSantaCriteria() {
+        return SANTA.getTotalDiscountPrice();
+    }
+
+    private static Price getTreeCriteria() {
+        return TREE.getTotalDiscountPrice();
+    }
+
+    private static Price getStarCriteria() {
+        return STAR.getTotalDiscountPrice();
+    }
+
     public Name getBadgeName() {
         return badgeName;
     }
