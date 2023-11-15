@@ -8,6 +8,7 @@ import static christmas.domain.DiscountDto.judgeXmasDiscount;
 
 import christmas.domain.date.VisitDate;
 import christmas.domain.discount.ChristmasDiscount;
+import christmas.domain.discount.EventBadge;
 import christmas.domain.discount.GiftMenuEvent;
 import christmas.domain.discount.SpecialDiscount;
 import christmas.domain.discount.WeekdayDiscount;
@@ -184,7 +185,7 @@ public class MoneyManagement {
     }
 
     private Name getBadge() {
-        // TODO Badge 클래스 생성
-        return null;
+        EventBadge eventBadge = EventBadge.findByPrice(totalDiscountPrice);
+        return eventBadge.getBadgeName();
     }
 }
